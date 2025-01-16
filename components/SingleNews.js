@@ -1,4 +1,5 @@
 import { BASE_URL } from "@/helpers/baseUrl";
+import truncate from "@/helpers/truncate";
 import Image from "next/image";
 import Link from "next/link";
 // import { FaCopy, FaPrint, FaThumbsUp, FaShareSquare } from "react-icons/fa";
@@ -18,13 +19,15 @@ export default async function SingleNews({ slug }) {
     news = json.data; // Access the `data` property
   } catch (error) {
     console.error("Error fetching news:", error.message);
-    return <div>Error: Unable to fetch news data.</div>;
+    return (
+      <div>Something Went wrong! Please Reload page or try again later.</div>
+    );
   }
 
   const categories = news?.categories;
 
   //   console.log("cat;", categories);
-  if (categories.length > 0) {
+  if (categories?.length > 0) {
     const cat_slug = categories[0].slug; // Get the first category slug
 
     //   fetch similarNews
@@ -40,7 +43,7 @@ export default async function SingleNews({ slug }) {
     } catch (error) {}
   }
 
-  console.log("nmews", news);
+  // console.log("nmews", news);
   //   // Button handlers (add meaningful implementations)
   //   const handleCopyLink = () => {
   //     navigator.clipboard.writeText(window.location.href);
@@ -85,6 +88,8 @@ export default async function SingleNews({ slug }) {
                       {news.update_post_date} | {news.update_post_time}
                     </p>
                   </div>
+
+                  {/* share, copy and download section */}
                   {/* <div className="flex items-center justify-center gap-6">
                     <button
                       className="bg-gray-200 p-1 px-3 rounded-md flex items-center justify-center gap-1"
@@ -127,7 +132,7 @@ export default async function SingleNews({ slug }) {
                 </div>
               </div>
 
-              {/* Sidebar (Similar News Placeholder) */}
+              {/* Sidebar (Similar News ) */}
               <div className="basis-[30%] mt-10 lg:mt-0">
                 <div className="lg:flex lg:flex-col lg:gap-4 text-xl flex flex-col gap-5">
                   {similarNews?.length > 0 ? (
@@ -149,7 +154,8 @@ export default async function SingleNews({ slug }) {
                             href={`/news/${item.slug}`}
                           >
                             <h2 className="basis-1/2 hover:text-yellow-600 w-fit">
-                              {item.name}
+                              {/* {truncate(item.name, 10)} */}
+                              {item.name.slice(0, 55)}...
                             </h2>
                           </Link>
                         </div>

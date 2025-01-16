@@ -87,7 +87,9 @@ export default function CategoryPage() {
     );
   }
   if (error) {
-    return <p>Error: {error.message}</p>; // Display error message if there is an error
+    return (
+      <p>Somthing went wrong! Please reload the page or try again later.</p>
+    );
   }
 
   return (
