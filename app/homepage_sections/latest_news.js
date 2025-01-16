@@ -46,7 +46,7 @@ export default function LatestNews() {
                 <div className="grid grid-flow-row lg:grid-cols-3 lg:grid-flow-col lg:gap-4">
                   <Featured />
                   {latestNews.length > 0 ? (
-                    <div className="order-1 lg:col-span-2">
+                    <div className="order-2 lg:col-span-2">
                       <Link href={"/news/" + latestNews[0].slug}>
                         <Image
                           src={latestNews[0]?.featured_image} // Path relative to the public directory
@@ -74,41 +74,46 @@ export default function LatestNews() {
                   )}
                 </div>
               </div>
-
-              <div className="grid grid-flow-row xgrid-rows-3 gap-1">
-                {latestNews.length > 1 ? (
-                  latestNews.slice(1, 9).map((item, index) => (
-                    <div
-                      key={index}
-                      className="border-b-2 border-b-gray-100 pb-2"
-                    >
-                      <div className="grid lg:grid-cols-3 lg:gap-2">
-                        {/* Image Column - 1/3 Width on Large Screens */}
-                        <div className="lg:col-span-1">
-                          <Link href={"/news/" + item.slug}>
-                            <Image
-                              className="object-cover w-full h-[70px]" // Set maximum height to 150px
-                              src={item.featured_image}
-                              alt={item.name}
-                              width={150}
-                              height={70}
-                            />
-                          </Link>
-                        </div>
-                        {/* Title Column - 2/3 Width on Large Screens */}
-                        <div className="lg:col-span-2">
-                          <h2 className="text-lg font-semibold">
+              {/* most viewed news */}
+              <div>
+                <h3 className="border-b border-t-2 border-b-gray-200 border-t-blue-400 py-0 text-center text-2xl mb-3">
+                  সর্বাধিক পঠিত সংবাদ
+                </h3>
+                <div className="grid grid-flow-row xgrid-rows-3 gap-1">
+                  {latestNews.length > 1 ? (
+                    latestNews.slice(0, 9).map((item, index) => (
+                      <div
+                        key={index}
+                        className="border-b-2 border-b-gray-100 pb-2"
+                      >
+                        <div className="grid lg:grid-cols-3 lg:gap-2">
+                          {/* Image Column - 1/3 Width on Large Screens */}
+                          <div className="lg:col-span-1">
                             <Link href={"/news/" + item.slug}>
-                              {truncate(item?.name, 80)}
+                              <Image
+                                className="object-cover w-full h-[70px]" // Set maximum height to 150px
+                                src={item.featured_image}
+                                alt={item.name}
+                                width={150}
+                                height={70}
+                              />
                             </Link>
-                          </h2>
+                          </div>
+                          {/* Title Column - 2/3 Width on Large Screens */}
+                          <div className="lg:col-span-2">
+                            <h2 className="text-lg font-semibold">
+                              <Link href={"/news/" + item.slug}>
+                                {truncate(item?.name, 80)}
+                              </Link>
+                            </h2>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))
-                ) : (
-                  <p> No post available </p>
-                )}
+                    ))
+                  ) : (
+                    <p> No post available </p>
+                  )}
+                </div>
               </div>
             </div>
           </div>

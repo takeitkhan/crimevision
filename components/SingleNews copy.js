@@ -174,10 +174,10 @@ export default function SingleNews({ slug }) {
                         </style>
                     </head>
                     <body>
-                        <div class="logo">
+                        <div className="logo">
                             <img src="${logoUrl}" alt="Logo" width="200" />
                         </div>
-                        <div class="title">${news.name}</div>  <!-- Include the news title here -->
+                        <div className="title">${news.name}</div>  <!-- Include the news title here -->
                         ${printContent.innerHTML}
                     </body>
                 </html>
