@@ -45,7 +45,7 @@ const Footer = () => {
         <div className="container mx-auto px-5">
           <div className="flex justify-center mb-10">
             <div>
-              <ul class="flex flex-row flex-wrap align-middle items-center gap-2 ">
+              <ul className="flex flex-row flex-wrap align-middle items-center gap-2 ">
                 {FooterMenu.length > 0 ? (
                   FooterMenu.map((item, index) => (
                     <li
