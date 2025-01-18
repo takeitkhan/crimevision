@@ -11,13 +11,9 @@ export default function Featured() {
 
   useEffect(() => {
     axiosInstance
-      .get("/posts?term_type=news&per_page=17")
-      .then((response) => {
-        // Filter news where is_featured is not null (i.e., featured news)
-        const featured = response.data.data.filter(
-          (news) => news.is_featured === "Yes"
-        );
-        setFeaturedNews(featured); // Update state with filtered data
+      .get("/posts?term_type=news&per_page=17&order_by=id:desc&is_featured=Yes")
+      .then((response) => {      
+        setFeaturedNews(response.data.data); // Update state with filtered data
         setLoading(false); // Set loading to false when data is fetched
       })
       .catch((error) => {
