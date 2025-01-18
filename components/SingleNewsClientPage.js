@@ -7,7 +7,7 @@ import axiosInstance from "@/helpers/axiosInstance";
 import { debounce } from "lodash";
 import { FaCopy, FaPrint, FaThumbsUp, FaShareSquare } from "react-icons/fa";
 
-export default function SingleNews({ slug }) {
+export default function SingleNewsClientPage({ slug }) {
   const [news, setNews] = useState(null);
   const [similarNews, setSimilarNews] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -126,7 +126,7 @@ export default function SingleNews({ slug }) {
 
   // Handle "Like" action
   // const handleLike = () => {
-  //   setLikes(likes + 1);    
+  //   setLikes(likes + 1);
   // };
 
   // Share current page (web share API)

@@ -1,13 +1,11 @@
 import { BASE_URL } from "@/helpers/baseUrl";
-import truncate from "@/helpers/truncate";
 import Image from "next/image";
 import Link from "next/link";
-// import { FaCopy, FaPrint, FaThumbsUp, FaShareSquare } from "react-icons/fa";
 
-export default async function SingleNews({ slug }) {
+export default async function SingleNewsStaticPage({ slug }) {
   let news;
   let similarNews;
-  //   const url = "http://mathmozocms.test/api/v1";
+
   try {
     const response = await fetch(
       `${BASE_URL}/api/v1/post?term_type=news&order_by=desc&slug=${slug}`,
@@ -43,26 +41,6 @@ export default async function SingleNews({ slug }) {
     } catch (error) {}
   }
 
-  // console.log("nmews", news);
-  //   // Button handlers (add meaningful implementations)
-  //   const handleCopyLink = () => {
-  //     navigator.clipboard.writeText(window.location.href);
-  //     alert("Link copied to clipboard!");
-  //   };
-
-  //   const handlePrint = () => {
-  //     window.print();
-  //   };
-
-  //   const handleLike = () => {
-  //     console.log("Liked!");
-  //     alert("You liked this post!");
-  //   };
-
-  //   const handleShare = () => {
-  //     alert("Share functionality is not implemented yet!");
-  //   };
-
   return (
     <section className="py-10">
       <div className="container mx-auto px-5">
@@ -88,37 +66,6 @@ export default async function SingleNews({ slug }) {
                       {news.update_post_date} | {news.update_post_time}
                     </p>
                   </div>
-
-                  {/* share, copy and download section */}
-                  {/* <div className="flex items-center justify-center gap-6">
-                    <button
-                      className="bg-gray-200 p-1 px-3 rounded-md flex items-center justify-center gap-1"
-                      onClick={handleCopyLink}
-                    >
-                      <FaCopy className="text-red-700" />
-                    </button>
-
-                    <button
-                      className="bg-gray-200 p-1 px-3 rounded-md flex items-center justify-center gap-1"
-                      onClick={handlePrint}
-                    >
-                      <FaPrint className="text-red-700" />
-                    </button>
-
-                    <button
-                      className="bg-[#2176FF] text-white p-1 px-3 rounded-md flex items-center justify-center gap-1"
-                      onClick={handleLike}
-                    >
-                      <FaThumbsUp />
-                    </button>
-
-                    <button
-                      className="bg-[#2176FF] text-white p-1 px-3 rounded-md flex items-center justify-center gap-1"
-                      onClick={handleShare}
-                    >
-                      <FaShareSquare />
-                    </button>
-                  </div> */}
                 </div>
 
                 {/* Description */}

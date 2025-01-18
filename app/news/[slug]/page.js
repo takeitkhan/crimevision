@@ -1,7 +1,8 @@
-import SingleNews from "@/components/SingleNews";
 import React from "react";
 import { headers } from "next/headers";
 import { BASE_URL } from "@/helpers/baseUrl";
+import SingleNewsStaticPage from "@/components/SingleNewsStaticPage";
+import SingleNewsClientPage from "@/components/SingleNewsClientPage";
 
 export async function generateMetadata({ params, request }) {
   const slug = params.slug;
@@ -46,7 +47,8 @@ export default function Page({ params }) {
 
   return (
     <div>
-      <SingleNews slug={slug}></SingleNews>
+      <SingleNewsStaticPage slug={slug}></SingleNewsStaticPage>
+      {/* <SingleNewsClientPage slug={slug}></SingleNewsClientPage> */}
     </div>
   );
 }
