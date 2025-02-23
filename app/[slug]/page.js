@@ -14,9 +14,9 @@ export default function CategoryPage() {
   const [news, setNews] = useState([]); // Use state to store news items
   const [meta, setMeta] = useState([]); // Use state to store meta information
   const [category, setCategory] = useState([]); // State to store categories
-  const [page, setPage] = useState(1); // State to track the current page number
-  const [loading, setLoading] = useState(true); // Add loading state
+  const [page, setPage] = useState(1); // State to track the current page number  
   const [loadingMore, setLoadingMore] = useState(false); // State for loading more news
+  const [loading, setLoading] = useState(true); // Add loading state
   const [error, setError] = useState(null); // Add error state
 
   useEffect(() => {
@@ -82,7 +82,7 @@ export default function CategoryPage() {
   if (loading) {
     return (
       <section className="homeBlock pt-[50px] pb-[80px] px-5">
-        <div className="container mx-auto">Loading...</div>
+        <div className="container mx-auto"></div>
       </section>
     );
   }

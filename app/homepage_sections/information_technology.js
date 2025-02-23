@@ -25,8 +25,7 @@ export default function InformationTechnology() {
     if (loading) {
         return (
             <section className="homeBlock pt-[50px] pb-[80px] px-5">
-                <div className="container mx-auto">
-                    Loading...
+                <div className="container mx-auto">                    
                 </div>
             </section>
         );
@@ -41,7 +40,7 @@ export default function InformationTechnology() {
             <div className="container py-10">
                 <div className="text-center mb-5">
                     <div className="border-b border-custom">
-                        <h2 className="border-b-2 border-black-400 text-2xl inline font-extrabold">তথ্যপ্রযুক্তি</h2>
+                        <h2 className="text-2xl inline font-extrabold">তথ্যপ্রযুক্তি</h2>
                     </div>
                 </div>
 

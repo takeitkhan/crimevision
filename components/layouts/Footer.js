@@ -30,7 +30,7 @@ const Footer = () => {
   if (loading) {
     return (
       <section className="homeBlock pt-[50px] pb-[80px] px-5">
-        <div className="container mx-auto">Loading...</div>
+        <div className="container mx-auto"></div>
       </section>
     );
   }

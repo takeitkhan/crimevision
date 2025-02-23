@@ -48,7 +48,7 @@ export default function CategoryPage() {
 
 
     if (loading) {
-        return <p>Loading...</p>;  // Display loading state
+        return <p></p>;  // Display loading state
     }
 
     if (error) {

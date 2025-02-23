@@ -28,8 +28,7 @@ export default function Menu({isOpen, setIsOpen}) {
     if (loading) {
         return (
             <section className="homeBlock pt-[50px] pb-[80px] px-5">
-                <div className="container mx-auto">
-                    Loading...
+                <div className="container mx-auto">                    
                 </div>
             </section>
         );

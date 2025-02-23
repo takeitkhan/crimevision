@@ -1,50 +1,34 @@
-import Bangladesh from "./homepage_sections/bangladesh";
-import Entertainment from "./homepage_sections/entertainment";
-import International from "./homepage_sections/international";
-import LatestNews from "./homepage_sections/latest_news";
-import Politics from "./homepage_sections/politics";
-import Economics from "./homepage_sections/economics";
-import Sports from "./homepage_sections/sports";
-import National from "./homepage_sections/national";
-import InformationTechnology from "./homepage_sections/information_technology";
-import { Metadata } from "next";
-
+import Bangladesh from './homepage_sections/bangladesh'
+import Entertainment from './homepage_sections/entertainment'
+import LatestNews from './homepage_sections/latest_news'
+import Sports from './homepage_sections/sports'
+import InformationTechnology from './homepage_sections/information_technology'
+import EightCats from './homepage_sections/eight_cats'
 
 export const metadata = {
-  title: "News page",
-  description: "description of news",
+  title: 'ক্রাইম ভিশন',
+  description: 'সর্বশেষ সংবাদ সবার আগে',
+  keywords: 'Daily News, Crime News, Crime Vision, Daily Leading News, সর্বশেষ সংবাদ সবার আগে',
   openGraph: {
-    title: "News page",
-    description: "description of news",
-    url: "",
-    siteName: "",
-    images: [
-      {
-        url: "",
-        width: 1260,
-        height: 800
-      }
-    ]
+    title: 'ক্রাইম ভিশন',
+    description: 'সর্বশেষ সংবাদ সবার আগে',
+    images: ['/img/default_image.png'], // Ensure the image exists in `/public/img/`
+    url: 'https://crimevision.com',
+    type: 'website'
   }
 }
-
-
 
 const HomeTopBlock = () => {
   return (
     <>
-
-        <LatestNews />
-        <National />
-        <International />
-        <Politics />
-        <Economics />
-        <Bangladesh />
-        <Sports />
-        <Entertainment />
-        <InformationTechnology />
+      <LatestNews />
+      <EightCats />
+      <Bangladesh />
+      <Sports />
+      <Entertainment />
+      <InformationTechnology />
     </>
-  );
-};
+  )
+}
 
-export default HomeTopBlock;
+export default HomeTopBlock

@@ -38,7 +38,44 @@ a:hover {
   }
 }
 
-body
-{
+body {
   color: black;
+}
+
+.title-heading-wrapper {
+  background: #e1e1e1;
+  margin-bottom: 10px;
+}
+
+.title-heading {
+  color: #fff;
+  font-size: 22px;
+  line-height: 22px;
+  height: 40px;
+  position: relative;
+  background: green;
+  margin: 0;
+  display: inline-block;
+  padding: 10px 15px;
+}
+
+.title-heading:before {
+  content: '';
+  position: absolute;
+  right: -20px;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-left: 20px solid green;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+}
+
+.title-right-link {
+  font-size: 17px;
+  float: right;
+  color: #333;
+  padding-right: 8px;
+  line-height: 42px;
+  text-decoration: none;
 }
