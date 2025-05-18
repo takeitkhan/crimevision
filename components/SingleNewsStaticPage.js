@@ -79,7 +79,7 @@ export default function SingleNewsStaticPage ({ slug }) {
                   </div>
                   <div className='flex gap-2'>
                     <button
-                      onClick={handleShare}
+                      onClick={() => handleShare(news?.slug)}                      
                       className='share-button flex items-center space-x-2 bg-green-800 text-white rounded-md p-2'
                     >
                       <ShareIcon className='w-5 h-5' />

@@ -1,16 +1,15 @@
 // helpers/shareHelper.js
 
-export const handleShare = () => {
-  const url = window.location.href
-  const title = document.title
+export const handleShare = slug => {
+  const link = `${window.location.origin}/news/${slug}`
 
-  const fbShareLink = `https://www.facebook.com/sharer/sharer.php?u=${url}`
+  const fbShareLink = `https://www.facebook.com/sharer/sharer.php?u=${link}`
 
   if (navigator.share) {
     navigator
       .share({
         title: title,
-        url: fbShareLink + url
+        url: fbShareLink
       })
       .then(() => {
         console.log('Thanks for sharing!')
