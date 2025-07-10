@@ -4,14 +4,14 @@ const nextConfig = {
     BASE_URL: process.env.BASE_URL || "http://localhost:3000",
   },
   images: {
-    domains: ["mathmozocms.test"],
+    domains: ["mathmozocms.test","admin.crimevision.news","crimevision.news"],
   },
   async rewrites() {
     return [
       {
         source: "/api/:path*",
-        // destination: "https://admin.crimevision.news/api/v1/:path*",
-        destination: "http://mathmozocms.test/api/v1/:path*", // Proxy to Backend
+        destination: "https://admin.crimevision.news/api/v1/:path*",
+        // destination: "http://mathmozocms.test/api/v1/:path*", // Proxy to Backend
       },
     ];
   },

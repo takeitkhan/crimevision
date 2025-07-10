@@ -1,24 +1,26 @@
 // helpers/shareHelper.js
 
-export const handleShare = slug => {
-  const link = `${window.location.origin}/news/${slug}`
-
-  const fbShareLink = `https://www.facebook.com/sharer/sharer.php?u=${link}`
+export const handleShare = (slug, title = 'News') => {
+  const link = `${window.location.origin}/news/${slug}`;
 
   if (navigator.share) {
     navigator
       .share({
         title: title,
-        url: fbShareLink
+        url: link,
       })
       .then(() => {
-        console.log('Thanks for sharing!')
+        console.log('Thanks for sharing!');
       })
-      .catch(console.error)
+      .catch((err) => {
+        console.error('Share failed:', err);
+      });
   } else {
-    alert('Share feature is not supported in this browser.')
+    // Fallback: Open Facebook share dialog
+    const fbShareLink = `https://www.facebook.com/sharer/sharer.php?u=${link}`;
+    window.open(fbShareLink, '_blank');
   }
-}
+};
 
 // Print News
 export const handlePrint = (printContentId, title, logoUrl, newsUrl) => {

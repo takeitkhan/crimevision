@@ -1,74 +1,14 @@
-'use client'
-import { useEffect, useState } from 'react'
-import axiosInstance from '@/helpers/axiosInstance'
 import Image from 'next/image'
 import Link from 'next/link'
-import truncate from '@/helpers/truncate'
+import { getNewsByCat } from '@/helpers/actions'
 
-function EightCats () {
-  const [politicsNews, setPoliticsNews] = useState([]) // Use state to store categories
-  const [nationalNews, setNationalNews] = useState([]) // Use state to store categories
-  const [internationalNews, setInternationalNews] = useState([]) // Use state to store categories
-  const [economyNews, setEconomyNews] = useState([]) // Use state to store categories
-  const [loading, setLoading] = useState(true) // Add loading state
-  const [error, setError] = useState(null) // Add error state
+async function EightCats() {
+  const politicsNews =await getNewsByCat("politics",5)
+  const nationalNews =await getNewsByCat("national",5)
+  const internationalNews =await getNewsByCat("international",5)
+  const economyNews =await getNewsByCat("economy",5)
 
-  useEffect(() => {
-    // Set loading true before starting both requests
-    setLoading(true)
-
-    const fetchPoliticsNews = axiosInstance.get(
-      '/posts?term_type=news&category_slug=politics&order_by=desc&per_page=5'
-    )
-    const fetchNationalNews = axiosInstance.get(
-      '/posts?term_type=news&category_slug=national&order_by=desc&per_page=5'
-    )
-    const fetchInternationalNews = axiosInstance.get(
-      '/posts?term_type=news&category_slug=international&order_by=desc&per_page=5'
-    )
-    const fetchEconomyNews = axiosInstance.get(
-      '/posts?term_type=news&category_slug=economy&order_by=desc&per_page=5'
-    )
-
-    Promise.all([
-      fetchPoliticsNews,
-      fetchNationalNews,
-      fetchInternationalNews,
-      fetchEconomyNews
-    ])
-      .then(
-        ([
-          politicsResponse,
-          nationalResponse,
-          internationalResponse,
-          economyResponse
-        ]) => {
-          setPoliticsNews(politicsResponse.data.data) // Update state with politics news
-          setNationalNews(nationalResponse.data.data) // Update state with national news
-          setInternationalNews(internationalResponse.data.data) // Update state with national news
-          setEconomyNews(economyResponse.data.data) // Update state with national news
-          //setMaxVisitedNews(maxVisitedResponse.data.data) // Update state with max visited news
-          setLoading(false) // Set loading to false once both requests are resolved
-        }
-      )
-      .catch(error => {
-        setError(error) // Set error state in case of any failure
-        setLoading(false) // Set loading to false if there's an error
-      })
-  }, [])
-
-  if (loading) {
-    return (
-      <section className='homeBlock pt-[50px] pb-[80px] px-5'>
-        <div className='container mx-auto'></div>
-      </section>
-    )
-  }
-
-  if (error) {
-    return <p>Error: {error.message}</p> // Display error message if there is an error
-  }
-
+ 
   return (
     <div className='container pt-10'>
       <div className='flex flex-wrap -mx-4'>
@@ -87,7 +27,7 @@ function EightCats () {
               </a>
             </div>
             <div className=''>
-              {politicsNews.map((news, idx) => (
+              {politicsNews?.map((news, idx) => (
                 <div
                   key={idx}
                   className='grid grid-cols-2 gap-2 items-start md:flex-row justify-between space-x-3 w-full'
@@ -125,7 +65,7 @@ function EightCats () {
               </a>
             </div>
             <div className=''>
-              {nationalNews.map((news, idx) => (
+              {nationalNews?.map((news, idx) => (
                 <div
                   key={idx}
                   className='grid grid-cols-2 gap-2 items-start md:flex-row justify-between space-x-3 w-full'
@@ -163,7 +103,7 @@ function EightCats () {
               </a>
             </div>
             <div className=''>
-              {internationalNews.map((news, idx) => (
+              {internationalNews?.map((news, idx) => (
                 <div
                   key={idx}
                   className='grid grid-cols-2 gap-2 items-start md:flex-row justify-between space-x-3 w-full'
@@ -201,7 +141,7 @@ function EightCats () {
               </a>
             </div>
             <div className=''>
-              {economyNews.map((news, idx) => (
+              {economyNews?.map((news, idx) => (
                 <div
                   key={idx}
                   className='grid grid-cols-2 gap-2 items-start md:flex-row justify-between space-x-3 w-full'

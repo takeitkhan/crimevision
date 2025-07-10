@@ -1,21 +1,19 @@
-"use client";
-import Menu from "@/app/homepage_sections/menu";
+
 import Header from "./layouts/Header";
 import Footer from "./layouts/Footer";
-import { useState, useEffect } from "react";
-import Loader from "./Loader";
+import { getMenus } from "@/helpers/actions";
 
-const Provider = ({ children }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  
+const Provider = async ({ children }) => {
+  const data = await getMenus()
+  const menus = data?.items
+
   return (
     <>
-        <div>
-          <Header setIsOpen={setIsOpen} isOpen={isOpen} />
-          <Menu isOpen={isOpen} setIsOpen={setIsOpen} />
-          <div>{children}</div>
-          <Footer />
-        </div>
+      <div>
+        <Header menus={menus} />
+        <div>{children}</div>
+        <Footer />
+      </div>
     </>
   );
 };

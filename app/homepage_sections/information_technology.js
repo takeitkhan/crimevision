@@ -1,39 +1,11 @@
-"use client";
-import { useEffect, useState } from 'react';
-import axiosInstance from '@/helpers/axiosInstance';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import truncate from '@/helpers/truncate';
+import { getNewsByCat } from '@/helpers/actions';
 
-export default function InformationTechnology() {
-    const [infoTechNews, setInfoTechNews] = useState([]);  // Use state to store categories
-    const [loading, setLoading] = useState(true);       // Add loading state
-    const [error, setError] = useState(null);           // Add error state
-
-    useEffect(() => {
-        axiosInstance.get('/posts?term_type=news&category_slug=information_technology&order_by=desc&per_page=9')
-            .then(response => {
-                setInfoTechNews(response.data.data);  // Update state with API data
-                setLoading(false);              // Set loading to false when data is fetched
-            })
-            .catch(error => {
-                setError(error);                // Set error state if request fails
-                setLoading(false);              // Set loading to false in case of error
-            });
-    }, []);
-
-    if (loading) {
-        return (
-            <section className="homeBlock pt-[50px] pb-[80px] px-5">
-                <div className="container mx-auto">                    
-                </div>
-            </section>
-        );
-    }
-
-    if (error) {
-        return <p>Error: {error.message}</p>;  // Display error message if there is an error
-    }
+export default async function InformationTechnology() {
+    const infoTechNews = await getNewsByCat("information_technology", 9)
 
     return (
         <div>
