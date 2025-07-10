@@ -3,15 +3,15 @@ import { headers } from 'next/headers'
 import { BASE_URL } from '@/helpers/baseUrl'
 import { truncate } from 'lodash'
 import SingleNewsStaticPage from '@/components/SingleNewsStaticPage'
+import { getNewsByCat, getSingleNews } from '@/helpers/actions'
 
 // Function to strip HTML tags
-function stripHtmlTags (input) {
+function stripHtmlTags(input) {
   return input.replace(/<[^>]*>/g, '') // Regular expression to remove HTML tags
 }
 
-export async function generateMetadata ({ params }) {
+export async function generateMetadata({ params }) {
   const slug = params.slug
-
   const news = await fetch(
     `${BASE_URL}/api/v1/post?term_type=news&order_by=desc&slug=${slug}`
   ).then(res => res.json())
@@ -52,12 +52,28 @@ export async function generateMetadata ({ params }) {
   }
 }
 
-export default function Page ({ params }) {
+export default async function Page({ params }) {
   const slug = params.slug
+
+  const singleNews = await getSingleNews(slug)
+
+  // console.log("singleNews",singleNews)
+
+  let cat_slug = ""
+  if (singleNews?.categories?.length > 0) {
+    cat_slug = singleNews.categories[0].slug // Get the first category slug
+  }
+
+
+  // console.log("singleNews",cat_slug)
+
+  const similarNews = await getNewsByCat(cat_slug, 8)
+  //  console.log("similarNews:----",similarNews)
+
 
   return (
     <div>
-      <SingleNewsStaticPage slug={slug} />
+      <SingleNewsStaticPage slug={slug} news={singleNews} similarNews={similarNews} />
     </div>
   )
 }

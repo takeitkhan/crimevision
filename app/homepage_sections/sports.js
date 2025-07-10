@@ -1,42 +1,13 @@
-'use client'
-import { useEffect, useState } from 'react'
-import axiosInstance from '@/helpers/axiosInstance'
+
 import Image from 'next/image'
 import Link from 'next/link'
 import truncate from '@/helpers/truncate'
+import { getNewsByCat } from '@/helpers/actions'
 
-export default function Sports () {
-  const [sportsNews, setSportsNews] = useState([]) // Use state to store categories
-  const [loading, setLoading] = useState(true) // Add loading state
-  const [error, setError] = useState(null) // Add error state
+export default async function Sports() {
+  const sportsNews = await getNewsByCat("sports", 20)
 
-  useEffect(() => {
-    axiosInstance
-      .get(
-        '/posts?term_type=news&category_slug=sports&order_by=desc&per_page=20'
-      )
-      .then(response => {
-        setSportsNews(response.data.data) // Update state with API data
-        setLoading(false) // Set loading to false when data is fetched
-      })
-      .catch(error => {
-        setError(error) // Set error state if request fails
-        setLoading(false) // Set loading to false in case of error
-      })
-  }, [])
-
-  if (loading) {
-    return (
-      <section className='homeBlock pt-[50px] pb-[80px] px-5'>
-        <div className='container mx-auto'></div>
-      </section>
-    )
-  }
-
-  if (error) {
-    return <p>Error: {error.message}</p> // Display error message if there is an error
-  }
-
+  //  console.log("sportsNews",sportsNews)
   return (
     <div>
       <div className='container p-4 bg-blue-400'>
@@ -56,29 +27,28 @@ export default function Sports () {
         </div>
         <div className=''>
           <div className='grid lg:grid-cols-2 lg:grid-flow-col gap-4 '>
-            {sportsNews.length > 0 ? (
+            {sportsNews?.length > 0 ? (
               <div className='border border-gray-300 overflow-hidden bg-white'>
                 <div className='w-full h-40 md:h-48 lg:h-72 overflow-hidden'>
-                  <Link href={'/news/' + sportsNews[0].slug}>
+                  <Link href={'/news/' + sportsNews[0]?.slug}>
                     <Image
-                      src={sportsNews[0].featured_image}
-                      alt={sportsNews[0].name}
+                      src={sportsNews[0]?.featured_image}
+                      alt={sportsNews[0]?.name}
                       width={600} // Specify width
                       height={400} // Specify height
                       layout='responsive' // Makes the image responsive
                     />
                   </Link>
                 </div>
-                <h2 className='text-2xl'>
-                  <h2 className='p-2 text-xl lg:text-2xl font-bold'>
-                    <Link href={'/news/' + sportsNews[0].slug}>
-                      {sportsNews[0].name}
-                    </Link>
-                  </h2>
+                <h2 className='text-2xl p-2 lg:text-2xl font-bold'>
+                  <Link href={'/news/' + sportsNews[0]?.slug}>
+                    {sportsNews[0]?.name}
+                  </Link>
                 </h2>
 
+
                 <p className='p-2'>
-                  {truncate(sportsNews[0].description, 240)}
+                  {truncate(sportsNews[0]?.description, 240)}
                 </p>
               </div>
             ) : (
@@ -87,8 +57,8 @@ export default function Sports () {
 
             <div>
               <div className='grid grid-cols-3 gap-4'>
-                {sportsNews.length > 1 ? (
-                  sportsNews.slice(1, 7).map((item, index) => (
+                {sportsNews?.length > 1 ? (
+                  sportsNews?.slice(1, 7).map((item, index) => (
                     <div
                       key={index}
                       className='border border-gray-300 p-2 overflow-hidden bg-white'
@@ -99,8 +69,8 @@ export default function Sports () {
                         {' '}
                         {/* Set height and overflow-hidden */}
                         <Image
-                          src={item.featured_image}
-                          alt={item.name}
+                          src={item?.featured_image}
+                          alt={item?.name}
                           width={600}
                           height={400}
                           className='object-cover w-full h-full'

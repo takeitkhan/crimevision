@@ -1,11 +1,17 @@
-export default function truncate (str, limit) {
+export default function truncate(str, limit) {
+  // Strip HTML tags
   const noTags = str.replace(/<\/?[^>]+(>|$)/g, '')
 
-  const parser = new DOMParser()
-  let decodedString = parser.parseFromString(noTags, 'text/html')
-    .documentElement.textContent
-  decodedString = decodedString.replace(/&nbsp;/g, ' ')
+  // Decode basic HTML entities manually (DOMParser is not available server-side)
+  let decodedString = noTags
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#039;/g, "'")
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
 
+  // Truncate logic
   if (decodedString.length > limit) {
     let truncated = decodedString.substring(0, limit)
 

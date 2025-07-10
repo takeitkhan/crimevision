@@ -1,43 +1,14 @@
-"use client";
+
 import Link from "next/link";
-import { useState, useEffect } from "react";
-import axiosInstance from "@/helpers/axiosInstance";
-import Image from "next/image";
-import truncate from "@/helpers/truncate";
+import { getMenus } from "@/helpers/actions";
 
-// ==== images ===
-import footerLogo from "../../public/img/logo.jpg";
+const Footer = async () => {
+  const data = await getMenus()
+  const FooterMenu = data?.items || []
 
-const Footer = () => {
+
   const baseUrl = process.env.BASE_URL;
-  const [FooterMenu, setFooterMenu] = useState([]); // Use state to store categories
-  const [loading, setLoading] = useState(true); // Add loading state
-  const [error, setError] = useState(null); // Add error state
 
-  useEffect(() => {
-    axiosInstance
-      .get("menus?menu=5")
-      .then((response) => {
-        setFooterMenu(response.data.data.items); // Update state with API data
-        setLoading(false); // Set loading to false when data is fetched
-      })
-      .catch((error) => {
-        setError(error); // Set error state if request fails
-        setLoading(false); // Set loading to false in case of error
-      });
-  }, []);
-
-  if (loading) {
-    return (
-      <section className="homeBlock pt-[50px] pb-[80px] px-5">
-        <div className="container mx-auto"></div>
-      </section>
-    );
-  }
-
-  if (error) {
-    return <p>Error: {error.message}</p>; // Display error message if there is an error
-  }
 
   return (
     <footer>
@@ -46,8 +17,8 @@ const Footer = () => {
           <div className="flex justify-center mb-10">
             <div>
               <ul className="flex flex-row flex-wrap align-middle items-center gap-2 ">
-                {FooterMenu.length > 0 ? (
-                  FooterMenu.map((item, index) => (
+                {FooterMenu?.length > 0 ? (
+                  FooterMenu?.map((item, index) => (
                     <li
                       className="border border-slate-400 pt-1 px-5 align-middle"
                       key={index}
