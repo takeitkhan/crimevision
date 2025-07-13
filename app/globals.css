@@ -29,7 +29,7 @@ body {
 
 a:hover {
   color: #f97316;
-  font-weight: 700;
+  /* font-weight: 700; */
 }
 
 @layer utilities {

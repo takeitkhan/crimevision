@@ -6,7 +6,7 @@ export default function LeadNews({leadNews}) {
 
  
   return (
-    <div className="order-1">
+    <div className="">
       <h3 className="border border-green-800 py-1 text-center text-2xl bg-green-800 text-white rounded-t-md">
         আলোচিত সংবাদ
       </h3>

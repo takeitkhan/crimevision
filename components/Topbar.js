@@ -6,15 +6,15 @@ import Image from "next/image";
 
 // ==== image ====
 import Logo from "../public/img/logo.jpg";
+import { getMetaValueByMetaName } from "@/helpers/metaHelpers";
 
-const TopBar = ({ setIsOpen, isOpen }) => {
+const TopBar = ({ setIsOpen, isOpen,settings }) => {
+   const [currentTime, setCurrentTime] = useState('');
   const handleClick = () => {
     setIsOpen(!isOpen);
 
   };
-
-
-  const [currentTime, setCurrentTime] = useState('');
+ 
 
   const banglaMonths = [
     'জানুয়ারী', 'ফেব্রুয়ারী', 'মার্চ', 'এপ্রিল', 'মে', 'জুন',
@@ -52,17 +52,28 @@ const TopBar = ({ setIsOpen, isOpen }) => {
   }, []);
 
 
+
+
+    // const phone = getMetaValueByMetaName(settings, "company_phone") || "";
+  const facebookLink = getMetaValueByMetaName(settings, "facebook_url") || "#";
+  // const twitter = getMetaValueByMetaName(settings, "twitter_url") || "#";
+  //  const phone = getMetaValueByMetaName(settings, "company_phone") || "";
+   
+
   return (
     <header>
-      <div className="border-b-2 py-1">
+      <div className="border-b-2 py-1 px-1">
         <div className="container mx-auto">
-          <div className="grid text-center sm:text-center lg:text-left lg:grid-cols-2 lg:justify-evenly lg:grid-flow-col">
-            <div>{currentTime}</div>
-            {/* <div className="lg:text-right hidden md:block">
-              <button className="rounded-md border-2 border-gray-100 px-3">
-                কনভার্টার
-              </button>
-            </div> */}
+          <div className="grid text-center gap-2 sm:text-center lg:text-left lg:grid-cols-2 lg:justify-evenly lg:grid-flow-col">
+            <span>{currentTime}</span>
+            <div className="lg:text-right ">
+              <Link 
+              href={facebookLink}
+              target="blank"
+              className="rounded-md border-2 border-gray-100 px-3 text-blue-600">
+               আমাদের ফেসবুক পেজ ভিজিট করতে ক্লিক করুন
+              </Link>
+            </div>
           </div>
         </div>
       </div>

@@ -3,7 +3,7 @@ import { headers } from 'next/headers'
 import { BASE_URL } from '@/helpers/baseUrl'
 import { truncate } from 'lodash'
 import SingleNewsStaticPage from '@/components/SingleNewsStaticPage'
-import { getNewsByCat, getSingleNews } from '@/helpers/actions'
+import { getNews, getNewsByCat, getSingleNews } from '@/helpers/actions'
 
 // Function to strip HTML tags
 function stripHtmlTags(input) {
@@ -66,14 +66,16 @@ export default async function Page({ params }) {
 
 
   // console.log("singleNews",cat_slug)
-
+getNews
   const similarNews = await getNewsByCat(cat_slug, 8)
-  //  console.log("similarNews:----",similarNews)
+ const latestrNews = await getNews(12)
+
+
 
 
   return (
     <div>
-      <SingleNewsStaticPage slug={slug} news={singleNews} similarNews={similarNews} />
+      <SingleNewsStaticPage slug={slug} news={singleNews} similarNews={latestrNews} />
     </div>
   )
 }

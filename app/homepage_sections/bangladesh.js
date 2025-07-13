@@ -4,7 +4,7 @@ import truncate from '@/helpers/truncate'
 import { getMaxViewedNewsByCat, getNewsByCat } from '@/helpers/actions'
 
 export default async function Bangladesh() {
-  const bangladeshNews = await getNewsByCat("town_village", 11);
+  const bangladeshNews = await getNewsByCat("town_village", 14);
   const maxVisitedNews = await getMaxViewedNewsByCat("town_village", 8);
 
 // console.log("bangladeshNews", bangladeshNews)
@@ -15,7 +15,7 @@ export default async function Bangladesh() {
   return (
     <section className='homeBlock pt-[20px] pb-[20px] px-5'>
       <div className='container mx-auto'>
-        <div className='lg:grid lg:grid-flow-col lg:grid-cols-4 gap-4'>
+        <div className='lg:grid lg:grid-flow-col lg:grid-cols-3 gap-4'>
           <div className='col-span-3 border-b border-custom'>
             <div className='border-b border-custom'>
               <h2 className='text-2xl inline pr-5 font-extrabold'>জনপদ</h2>
@@ -30,7 +30,7 @@ export default async function Bangladesh() {
                     height={400} // Specify height
                     layout='responsive' // Makes the image responsive
                   />
-                  <h2 className='text-2xl'>
+                  <h2 className='text-2xl mt-4'>
                     <Link href={'/news/' + bangladeshNews[0].slug}>
                       {bangladeshNews[0].name}
                     </Link>
@@ -41,7 +41,7 @@ export default async function Bangladesh() {
                 <p>No post found!</p>
               )}
 
-              <div className='border-r border-custom pr-5'>
+              <div className='border-r border-custom pr-5 space-y-6'>
                 {bangladeshNews?.length > 1 ? (
                   bangladeshNews.slice(1, 3).map((item, index) => (
                     <div key={index}>
@@ -52,7 +52,7 @@ export default async function Bangladesh() {
                         height={400}
                         layout='responsive'
                       />
-                      <h2>
+                      <h2 className='mt-2'>
                         <Link href={'/news/' + item.slug}>{item.name}</Link>
                       </h2>
                     </div>
@@ -63,9 +63,9 @@ export default async function Bangladesh() {
               </div>
 
               <div>
-                <ul>
+                <ul className='space-y-2'>
                   {bangladeshNews?.length > 3 ? (
-                    bangladeshNews?.slice(3, 8).map((item, index) => (
+                    bangladeshNews?.slice(3, 9).map((item, index) => (
                       <li key={index} className='py-1 border-b border-custom'>
                         <Link href={'/news/' + item.slug}>{item.name}</Link>
                       </li>
@@ -75,9 +75,10 @@ export default async function Bangladesh() {
                   )}
                 </ul>
               </div>
+              
             </div>
           </div>
-          <div className='block'>
+          {/* <div className='block'>
             <div>
               <div className='border-b border-custom'>
                 <h2 className='text-2xl inline pr-5 font-extrabold'>
@@ -99,7 +100,8 @@ export default async function Bangladesh() {
                 </ul>
               </div>
             </div>
-          </div>
+          </div> */}
+
         </div>
       </div>
     </section>

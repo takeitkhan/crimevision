@@ -20,14 +20,14 @@ export const metadata = {
 
 const HomeTopBlock = () => {
   return (
-    <>
+    <div className=''>
       <LatestNews />
       <EightCats />
       <Bangladesh />
       <Sports />
       <Entertainment />
       <InformationTechnology />
-    </>
+    </div>
   )
 }
 

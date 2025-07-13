@@ -14,13 +14,13 @@ export default async function LatestNews() {
   return (
     <div>
       <div className='container pt-10 flex flex-col lg:flex-row gap-2'>
-        <div className='w-full lg:w-1/4 '>
+        {/* <div className='w-full lg:w-1/4 '>
           <LeadNews leadNews={leadNews} />
-        </div>
-        <div className='w-full lg:w-2/4'>
+        </div> */}
+        <div className='w-full lg:w-4/6 '>
           <Featured featuredNews={featuredNews} />
         </div>
-        <div className='w-full lg:w-1/4'>
+        <div className='w-full lg:w-2/6'>
           <NewsTabs />
         </div>
 

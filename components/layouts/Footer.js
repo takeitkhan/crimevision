@@ -32,8 +32,9 @@ const Footer = async () => {
               </ul>
             </div>
           </div>
-          <div className="container justify-center mx-auto text-center">
-            <p>
+          <div className="container justify-center mx-auto w-full ">
+            <div className=" flex flex-col  w-1/2 mx-auto text-center">
+              <p>
               <span>সম্পাদক ও প্রকাশকঃ </span>
               <strong>মোহাম্মদ মোক্তার হোসেন</strong>,
             </p>
@@ -41,7 +42,9 @@ const Footer = async () => {
               <span>বার্তা সম্পাদকঃ </span>
               <strong>তোফায়েল ইসলাম</strong>, মোবাইলঃ ০১৭১৭-৩৫১৬৭৪
             </p>
-            <p>
+            </div>
+            <div className="text-center">
+              <p>
               প্রকাশক কর্তৃক প্রকাশিত। প্রধান কার্যালয়ঃ বাড়ী নং- ৩৫, রোড নং- ১০,
               নবীনগর হাউজিং, মোহাম্মদপুর, ঢাকা -১২০৭ থেকে মুদ্রিত।{" "}
             </p>
@@ -50,6 +53,7 @@ const Footer = async () => {
               মোবাইলঃ ০১৯২৩-৮৪৬৬৬৬ (নিউজ ও বিজ্ঞাপন)। ই-মেইলঃ
               info@crimevision.news
             </p>
+            </div>
           </div>
         </div>
       </div>
