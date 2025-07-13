@@ -22,6 +22,14 @@ export const handleShare = (slug, title = 'News') => {
   }
 };
 
+
+export const handleFbShare = (slug, title = 'News') => {
+  const url = `${window.location.origin}/news/${slug}`;
+  const fbShareLink = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(title)}`;
+
+  window.open(fbShareLink, '_blank', 'width=600,height=400');
+};
+
 // Print News
 export const handlePrint = (printContentId, title, logoUrl, newsUrl) => {
   const printContent = document.getElementById(printContentId)

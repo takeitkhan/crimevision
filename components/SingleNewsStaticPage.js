@@ -2,13 +2,30 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import {
-  handleShare,
   handleCopyLink,
-  handlePrint
+  handlePrint,
 } from '@/helpers/commonHelper'
+import {
+  FaFacebookF,
+  FaWhatsapp,
+  FaTwitter,
+  FaLinkedinIn,
+} from "react-icons/fa";
 import { ShareIcon, PrinterIcon, ClipboardIcon } from '@heroicons/react/24/solid'
+import { useEffect, useState } from 'react';
 
-export default async function SingleNewsStaticPage({ slug, news, similarNews }) {
+export default function SingleNewsStaticPage({ slug, news, similarNews }) {
+  const [origin, setOrigin] = useState("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setOrigin(window.location.origin);
+    }
+  }, []);
+
+  const shareUrl = `${origin}/news/${slug}`;
+
+
   return (
     <section className='py-10'>
       <div className='container mx-auto px-5 '>
@@ -28,44 +45,76 @@ export default async function SingleNewsStaticPage({ slug, news, similarNews }) 
                  justify-between border-b-2 border-b-gray-300 mb-2 bg-blue-50 p-2'>
                   <div className='py-2'>
                     <span>ক্রাইম ভিশন</span>
+
                     <p>
                       প্রকাশ: {news.post_date} | {news.post_time} | আপডেট: {news.update_post_date} | {news.update_post_time}
                     </p>
+                    <div className='flex flex-wrap gap-2 text-sm mt-4'>
+                      <Link
+                        href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+                          shareUrl
+                        )}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-green-800 text-white rounded-md p-2 hover:text-white gap-[6px] flex items-center"
+                      >
+                        <FaFacebookF />
+                        <span>Facebook Share </span>
+                      </Link>
+
+
+
+                      {/* WhatsApp Share */}
+                      <Link
+                        href={`https://wa.me/?text=${encodeURIComponent(news.name + ' ' + shareUrl)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-green-800 text-white rounded-md p-2 hover:text-white gap-[6px] flex items-center"
+                      >
+                        <FaWhatsapp />
+                        <span>WhatsApp</span>
+                      </Link>
+
+
+                      {/* Twitter Share */}
+                      <Link
+                        href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(news.name)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-green-800 text-white rounded-md p-2 hover:text-white gap-[6px] flex items-center"
+                      >
+                        <FaTwitter />
+                        <span>Twitter</span>
+                      </Link>
+
+
+                      <button
+                        onClick={() =>
+                          handlePrint(
+                            'printableDiv',
+                            news.name,
+                            '/img/logo.jpg',
+                            window.location.href
+                          )
+                        }
+                        className='print-button flex items-center gap-[6px] bg-green-800 text-white rounded-md p-2'
+                      >
+                        <PrinterIcon className='w-5 h-5' />
+                        <span>Print</span>
+                      </button>
+
+                      <button
+                        onClick={() => handleCopyLink(news?.slug)}
+                        className='print-button flex items-center flex gap-[6px] bg-green-800 text-white rounded-md p-2'
+                      >
+                        <ClipboardIcon className='w-5 h-5 ' />
+                        <span>Copy Link</span>
+                      </button>
+
+                    </div>
                   </div>
 
-                  <div className='flex gap-2'>
-                    <button
-                      onClick={() => handleShare(news?.slug, news?.name)}
-                      className='share-button flex items-center space-x-2 bg-green-800 text-white rounded-md p-2'
-                    >
-                      <ShareIcon className='w-5 h-5' />
-                      <span>Share News</span>
-                    </button>
 
-
-                    <button
-                      onClick={() =>
-                        handlePrint(
-                          'printableDiv',
-                          news.name,
-                          '/img/logo.jpg',
-                          window.location.href
-                        )
-                      }
-                      className='print-button flex items-center space-x-2 bg-green-800 text-white rounded-md p-2'
-                    >
-                      <PrinterIcon className='w-5 h-5' />
-                      <span>Print News</span>
-                    </button>
-
-                    <button
-                      onClick={() => handleCopyLink(news?.slug)}
-                      className='print-button flex items-center space-x-2 bg-green-800 text-white rounded-md p-2'
-                    >
-                      <ClipboardIcon className='w-5 h-5' />
-                      <span>Copy News Link</span>
-                    </button>
-                  </div>
                 </div>
 
                 <h1 className='text-4xl d-block font-medium'>{news.name}</h1>
@@ -82,7 +131,7 @@ export default async function SingleNewsStaticPage({ slug, news, similarNews }) 
 
               <div className='basis-[30%] lg:mt-0'>
                 <div className='lg:flex lg:flex-col lg:gap-4 text-xl flex flex-col gap-5'>
-                  <h3>অন্যান্য সংবাদ</h3>
+                  <h3>সর্বশেষ সংবাদ</h3>
                   {similarNews?.length > 0 ? (
                     similarNews.map((item, index) => (
                       <div key={`similar-${index}`} className='flex justify-between gap-4'>

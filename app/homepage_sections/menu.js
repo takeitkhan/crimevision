@@ -42,11 +42,11 @@ const baseUrl = process.env.BASE_URL;
 
 
     return (
-        <div>
+        <div className='overflw-hidden'>
             <menu className="border-b-2 border-t-2 border-gray-100 px-5">
                 <div className="container mx-auto px-5 py-2 flex justify-center items-start font-bold">
                     {menus?.length > 0 ? (
-                        <ul id="menu-items" className="hidden sm:inline-flex gap-10 px-10 align-middle">
+                        <ul id="menu-items" className="hidden sm:inline-flex  lg:gap-8 xl:gap-10 px-10 align-middle">
                             {menus?.map((item, index) => (
 
                                 <li key={index} className="px-2 py-1 items-center">

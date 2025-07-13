@@ -1,21 +1,16 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import axiosInstance from '@/helpers/axiosInstance'
 import Link from 'next/link'
 import truncate from '@/helpers/truncate'
 import Image from 'next/image'
-
-// Swiper imports
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Pagination } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
 
-export default function Featured ({featuredNews}) {
-
+export default function Featured({ featuredNews }) {
   return (
-    <div className='order-2  w-full  '>
+    <div className='w-full'>
       {featuredNews.length > 0 ? (
         <Swiper
           modules={[Autoplay, Pagination]}
@@ -28,15 +23,15 @@ export default function Featured ({featuredNews}) {
         >
           {featuredNews.map((item, index) => (
             <SwiperSlide key={index}>
-              <div className='flex flex-col gap-6 w-full px-2'>
-                <div className='w-full'>
+              <div className='flex flex-col gap-4 w-full px-2'>
+                <div className='w-full h-[450px]  rounded-md'>
                   <Link href={`/news/${item.slug}`}>
                     <Image
                       src={item.featured_image}
                       alt={item.name}
                       width={800}
                       height={450}
-                      className='object-cover w-full h-auto rounded-md'
+                      className='w-full h-full object-cover'
                       unoptimized
                     />
                   </Link>

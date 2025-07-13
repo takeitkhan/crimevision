@@ -21,8 +21,8 @@ export async function getMenus() {
 }
 
 
-export async function getNews() {
-  const API_URL = `${BASE_URL}/api/v1/posts?term_type=news`;
+export async function getNews(perPage=20) {
+  const API_URL = `${BASE_URL}/api/v1/posts?term_type=news&per_page=${perPage}`;
 
   const res = await fetch(API_URL, {
     next: { revalidate: 30 },
@@ -67,7 +67,7 @@ export async function getLeadNews() {
 }
 
 export async function getNewsByCat(slug, perPage=5) {
-  const API_URL = `${BASE_URL}/api/v1/posts?term_type=news&category_slug=${slug}&order_by=desc&per_page=${perPage}`;
+  const API_URL = `${BASE_URL}/api/v1/posts?term_type=news&category_slug=${slug}&per_page=${perPage}`;
 
   const res = await fetch(API_URL, {
     next: { revalidate: 30 },

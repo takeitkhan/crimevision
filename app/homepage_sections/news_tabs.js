@@ -33,19 +33,19 @@ export default function NewsTabs () {
   }, [activeTab]) // Refetch when activeTab changes
 
   return (
-    <div className='order-3 w-full max-w-3xl mx-auto'>
+    <div className=' w-full max-w-3xl mx-auto'>
       <div className='flex border-b border-b-green-800'>
         <button
           className={`px-4 font-semibold focus:outline-none ${
             activeTab === 'latest'
-              ? 'bg-green-800 text-white py-2'
+              ? 'py-2'
               : 'text-gray-600'
           }`}
           onClick={() => setActiveTab('latest')}
         >
           সর্বশেষ সংবাদ
         </button>
-        <button
+        {/* <button
           className={`px-4 font-semibold focus:outline-none ${
             activeTab === 'most-read'
               ? 'bg-green-800 text-white py-2'
@@ -54,7 +54,7 @@ export default function NewsTabs () {
           onClick={() => setActiveTab('most-read')}
         >
           সর্বাধিক পঠিত
-        </button>
+        </button> */}
       </div>
 
       <div className='mt-4 w-full'>
