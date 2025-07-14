@@ -85,7 +85,7 @@ const TopBar = ({ setIsOpen, isOpen,settings }) => {
               <Image
                 src={Logo}
                 className="w-70"
-                alt="Daily Sabuj Nishan Logo"
+                alt=" Logo"
                 width={250}
                 height={200}
               />

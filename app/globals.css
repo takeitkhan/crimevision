@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ✅ Bangla Font: SolaimanLipi (must be placed in /public/fonts/) */
+@font-face {
+  font-family: 'SolaimanLipi';
+  src: url('/fonts/SolaimanLipi.woff2') format('woff2'),
+       url('/fonts/SolaimanLipi.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ✅ Optional fallback font: Noto Sans Bengali (if used via next/font/google) */
+/* Add this in _app.tsx or layout.tsx if you're loading via next/font */
+
+/* Theme colors */
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -16,32 +29,31 @@
   }
 }
 
+/* ✅ Base styles */
 body {
   color: rgb(var(--foreground-rgb));
-  /* background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb)); */
-  font-family: 'SolaimanLipi', 'Kalpurush', 'Arial', sans-serif;
+  background-color: #fff;
+  font-family: 'SolaimanLipi', 'Noto Sans Bengali', 'Hind Siliguri', Arial, sans-serif;
 }
 
+/* ✅ Anchor styles */
+a {
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
 a:hover {
-  color: #f97316;
-  /* font-weight: 700; */
+  color: #f97316; /* Tailwind orange-500 */
+  /* Avoid font-size or weight changes to prevent jump */
 }
 
+/* ✅ Utility extension */
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 }
 
-body {
-  color: black;
-}
-
+/* ✅ Title heading style (used in category blocks) */
 .title-heading-wrapper {
   background: #e1e1e1;
   margin-bottom: 10px;
@@ -78,4 +90,11 @@ body {
   padding-right: 8px;
   line-height: 42px;
   text-decoration: none;
+}
+
+/* ✅ Optional image fix if needed */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }

@@ -10,7 +10,7 @@ export const handleShare = (slug, title = 'News') => {
         url: link,
       })
       .then(() => {
-        console.log('Thanks for sharing!');
+        // console.log('Thanks for sharing!');
       })
       .catch((err) => {
         console.error('Share failed:', err);
@@ -48,13 +48,13 @@ export const handlePrint = (printContentId, title, logoUrl, newsUrl) => {
     return
   }
 
-  console.log('Window opened for printing.')
+  // console.log('Window opened for printing.')
 
   const img = new window.Image()
   img.src = logoUrl // Use the passed logoUrl
 
   img.onload = () => {
-    console.log('Image loaded successfully.')
+    // console.log('Image loaded successfully.')
 
     windowPrint.document.write(`
         <html>
