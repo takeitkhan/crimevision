@@ -1,13 +1,15 @@
 
 import Link from "next/link";
 import { getMenus } from "@/helpers/actions";
+import Image from "next/image";
+import Logo from "../../public/img/logoPng.png";
+import { getMetaValueByMetaName } from "@/helpers/metaHelpers";
 
-const Footer = async () => {
+const Footer = async ({settings}) => {
   const data = await getMenus()
   const FooterMenu = data?.items || []
-
-
   const baseUrl = process.env.BASE_URL;
+   const facebookLink = getMetaValueByMetaName(settings, "facebook_url") || "#";
 
 
   return (
@@ -16,7 +18,24 @@ const Footer = async () => {
         <div className="container mx-auto px-5">
           <div className="flex justify-center mb-10">
             <div>
-              <ul className="flex flex-row flex-wrap align-middle items-center gap-2 ">
+              <Link href="/">
+              <Image
+                src={Logo}
+                className="w-70"
+                alt=" Logo"
+                width={250}
+                height={200}
+              />
+            </Link>
+            <div className="lg:text-right mt-4 text-center">
+              <Link 
+              href={facebookLink}
+              target="blank"
+              className=" px-3 py-1 text-blue-600">
+              ফেসবুক পেজ ভিজিট করতে ক্লিক করুন
+              </Link>
+            </div>
+              {/* <ul className="flex flex-row flex-wrap align-middle items-center gap-2 ">
                 {FooterMenu?.length > 0 ? (
                   FooterMenu?.map((item, index) => (
                     <li
@@ -29,18 +48,22 @@ const Footer = async () => {
                 ) : (
                   <li></li>
                 )}
-              </ul>
+              </ul> */}
             </div>
           </div>
           <div className="container justify-center mx-auto w-full ">
-            <div className=" flex flex-col  w-1/2 mx-auto text-center">
+            <div className=" flex flex-col   text-center">
               <p>
               <span>সম্পাদক ও প্রকাশকঃ </span>
               <strong>মোহাম্মদ মোক্তার হোসেন</strong>,
             </p>
             <p>
               <span>বার্তা সম্পাদকঃ </span>
-              <strong>তোফায়েল ইসলাম</strong>, মোবাইলঃ ০১৭১৭-৩৫১৬৭৪
+              <strong>তোফায়েল ইসলাম</strong>
+            </p>
+            <p>
+              <span>মোবাইলঃ </span>
+              <strong>০১৭১৭-৩৫১৬৭৪</strong>
             </p>
             </div>
             <div className="text-center">

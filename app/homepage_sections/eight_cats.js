@@ -21,9 +21,9 @@ async function EightCats() {
                 জাতীয়
                 <span className='absolute top-0 right-0 w-3 h-full clip-triangle'></span>
               </div>
-              <a href='/' className='text-blue-600 flex items-start title-right-link'>
+              <Link href={`/national`} className='text-blue-600 flex items-start title-right-link'>
                 আরও সংবাদ <span className='ml-1'>→</span>
-              </a>
+              </Link>
             </div>
             <div className=''>
               {nationalNews?.map((news, idx) => (
@@ -54,9 +54,9 @@ async function EightCats() {
                 রাজনীতি
                 <span className='absolute top-0 right-0 w-3 h-full clip-triangle'></span>
               </div>
-              <a href='/' className='text-blue-600 flex items-start title-right-link'>
+              <Link href={`/politics`} className='text-blue-600 flex items-start title-right-link'>
                 আরও সংবাদ <span className='ml-1'>→</span>
-              </a>
+              </Link>
             </div>
             <div>
               {politicsNews?.map((news, idx) => (
@@ -87,9 +87,9 @@ async function EightCats() {
                 খেলাধুলা
                 <span className='absolute top-0 right-0 w-3 h-full clip-triangle'></span>
               </div>
-              <a href='/' className='text-blue-600 flex items-start title-right-link'>
+              <Link href={`/sports`} className='text-blue-600 flex items-start title-right-link'>
                 আরও সংবাদ <span className='ml-1'>→</span>
-              </a>
+              </Link>
             </div>
             <div>
               {sports?.map((news, idx) => (

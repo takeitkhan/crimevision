@@ -217,7 +217,7 @@ export default function SingleNews({ slug }) {
           url: fbShareLink + url,
         })
         .then(() => {
-          console.log("Thanks for sharing!");
+          // console.log("Thanks for sharing!");
         })
         .catch(console.error);
     } else {

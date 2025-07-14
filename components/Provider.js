@@ -13,7 +13,7 @@ const Provider = async ({ children }) => {
       <div>
         <Header menus={menus} settings={settings} />
         <div>{children}</div>
-        <Footer />
+        <Footer settings={settings} />
       </div>
     </>
   );

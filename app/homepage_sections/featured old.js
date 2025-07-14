@@ -14,7 +14,7 @@ export default function LeadNews () {
     axiosInstance
       .get('/posts?term_type=news&per_page=10&order_by=id:desc&is_featured=Yes')
       .then(response => {
-        console.log(response?.data)
+        // console.log(response?.data)
         setFeaturedNews(response?.data?.data || []) // Ensure it's always an array
         setLoading(false) // Set loading to false when data is fetched
       })

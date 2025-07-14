@@ -1,14 +1,12 @@
 "use client";
 
-
 import Link from 'next/link';
 import { IoMdClose } from "react-icons/io";
 
-export default  function Menu({ setIsOpen, isOpen, menus }) {
+export default function Menu({ setIsOpen, isOpen, menus }) {
+    const baseUrl = process.env.BASE_URL;
 
-const baseUrl = process.env.BASE_URL;
-
-    // console.log("menus item", menus)
+    // console.log("baseUrl", baseUrl)
     // const baseUrl = process.env.BASE_URL;
     // const [menus, setMenus] = useState([]);  // Use state to store categories
     // const [loading, setLoading] = useState(true);       // Add loading state
@@ -47,17 +45,18 @@ const baseUrl = process.env.BASE_URL;
                 <div className="container mx-auto px-5 py-2 flex justify-center items-start font-bold">
                     {menus?.length > 0 ? (
                         <ul id="menu-items" className="hidden sm:inline-flex  lg:gap-8 xl:gap-10 px-10 align-middle">
+                            <li className="px-2 py-1 items-center">
+                                <Link href={`/`}>হোম</Link>
+                            </li>
                             {menus?.map((item, index) => (
-
                                 <li key={index} className="px-2 py-1 items-center">
-                                    {/* {JSON.stringify(item)} */}
-                                    <Link href={baseUrl + '/' + item.link}>{item.label}</Link>
+                                    <Link href={`/${item?.link}`}>{item.label}</Link>
                                 </li>
-                                // Adjust according to your data structure
+                                
                             ))}
                         </ul>
                     ) : (
-                        <p>No categories found.</p>  // Message if there are no categories
+                        <p>No categories found.</p>  
                     )}
                 </div>
 

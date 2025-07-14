@@ -1,9 +1,17 @@
+// app/layout.tsx or app/layout.js
 import Header from "@/components/layouts/Header";
 import Footer from "@/components/layouts/Footer";
 import './globals.css';
 import Menu from "./homepage_sections/menu";
 import Provider from "@/components/Provider";
 import Head from "next/head";
+import { Noto_Sans_Bengali } from 'next/font/google';
+
+const notoBengali = Noto_Sans_Bengali({
+  weight: ['400', '700'],
+  subsets: ['bengali'],
+  display: 'swap',
+});
 
 export const metadata = {
   title: "Crime Vision",
@@ -16,8 +24,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">      
-      <body className={`text-base`}>
+    <html lang="bn">
+      <body className={`text-base ${notoBengali.className}`}>
         <Provider>
           {children}
         </Provider>
