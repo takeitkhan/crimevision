@@ -54,11 +54,11 @@ const Footer = async ({settings}) => {
           <div className="container justify-center mx-auto w-full ">
             <div className=" flex flex-col   text-center">
               <p>
-              <span>সম্পাদক ও প্রকাশকঃ </span>
+              <p>সম্পাদক ও প্রকাশকঃ </p>
               <strong>মোহাম্মদ মোক্তার হোসেন</strong>,
             </p>
             <p>
-              <span>বার্তা সম্পাদকঃ </span>
+              <p>বার্তা সম্পাদকঃ </p>
               <strong>তোফায়েল ইসলাম</strong>
             </p>
             <p>
