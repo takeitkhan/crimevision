@@ -36,7 +36,7 @@ export default function NewsTabs () {
     <div className=' w-full max-w-3xl mx-auto'>
       <div className='flex border-b border-b-green-800'>
         <button
-          className={`px-4 font-semibold focus:outline-none ${
+          className={`px-4 text-lg font-semibold focus:outline-none ${
             activeTab === 'latest'
               ? 'py-2'
               : 'text-gray-600'

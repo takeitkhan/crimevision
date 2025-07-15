@@ -10,19 +10,19 @@ export default async function Sports() {
   //  console.log("sportsNews",sportsNews)
   return (
     <div>
-      <div className='container p-4 bg-blue-400'>
+      <div className='container p-4 '>
         <div className='text-center mb-5'>
-          <div className='border-b border-custom'>
-            <Image
-              src={'/img/sports_heading.png'}
+          <div className='border-b '>
+            {/* <Image
+              src={'/img/sports.png'}
               alt={'Sports'}
               width={600} // Specify width
               height={400} // Specify height
               layout='responsive' // Makes the image responsive
-            />
-            {/* <h2 className="border-b-2 border-black-400 text-2xl inline font-extrabold">
+            /> */}
+            <h2 className=" text-2xl inline font-extrabold">
               খেলাধুলা
-            </h2> */}
+            </h2>
           </div>
         </div>
         <div className=''>

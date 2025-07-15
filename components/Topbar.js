@@ -95,7 +95,7 @@ const TopBar = ({ setIsOpen, isOpen,settings }) => {
           {/* Toggle Button */}
           <button
             id="menu-toggle"
-            className="block sm:hidden"
+            className="block md:hidden"
             onClick={handleClick}
           >
             <svg

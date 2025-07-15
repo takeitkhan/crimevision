@@ -55,7 +55,7 @@ const Footer = async ({settings}) => {
             <div className=" flex flex-col text-center">
               <div className="md:flex gap-1 justify-center items-center">
               <p>সম্পাদক ও প্রকাশকঃ </p>
-              <strong>মোহাম্মদ মোক্তার হোসেন</strong>,
+              <strong>মোহাম্মদ মোক্তার হোসেন</strong>
             </div>
             <div className="md:flex gap-1 justify-center items-center">
               <p>বার্তা সম্পাদকঃ </p>

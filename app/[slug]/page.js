@@ -169,7 +169,7 @@ export default function CategoryPage() {
         {news.length > 5 && (
           <div className="py-10 md:w-2/3 mx-auto flex flex-col gap-5">
             {news.slice(5).map((item, index) => (
-              <div key={index} className="flex flex-row gap-10">
+              <div key={index} className="flex flex-col  md:flex-row gap-10">
                 <div className="basis-1/2">
                   <Link
                     href={"/news/" + item.slug}

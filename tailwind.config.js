@@ -10,7 +10,15 @@ module.exports = {
       center: true,
     },
     extend: {
-
+      fontFamily: {
+        solaiman: ['SolaimanLipi', 'Noto Sans Bengali', 'Hind Siliguri', 'Arial', 'sans-serif'],
+      },
+      colors: {
+        'custom-gray': '#e2e2e2',
+      },
+      borderColor: {
+        custom: '#e2e2e2',
+      },
       keyframes: {
         bounce: {
           '0%, 100%': { transform: 'translateY(-10%)' },
@@ -20,26 +28,19 @@ module.exports = {
       animation: {
         bounce: 'bounce 2s infinite',
       },
-
-      screens: {
-        colors: {
-          'custom-gray': '#e2e2e2', // Example custom color
-        },
-        borderColor: theme => ({
-          default: theme('colors.gray.300', 'currentColor'),
-          'custom': theme('colors.custom-gray', 'currentColor'), // Apply custom color
-        }),
-      }
     },
     fontSize: {
-      sm: '0.8rem',
-      base: '1.1rem',
-      xl: '1.25rem',
-      '2xl': '1.563rem',
-      '3xl': '1.953rem',
-      '4xl': '2.441rem',
-      '5xl': '3.052rem',
+      xs: '0.875rem',    // 14px
+      sm: '1rem',        // 16px
+      base: '1.25rem',   // 20px (increased from 1.1rem)
+      lg: '1.5rem',      // 24px
+      xl: '1.875rem',    // 30px
+      '2xl': '2.25rem',  // 36px
+      '3xl': '3rem',     // 48px
+      '4xl': '3.75rem',  // 60px
+      '5xl': '4.5rem',   // 72px
     },
+
   },
   plugins: [],
 };

@@ -13,17 +13,20 @@ const entertainmentNews = await getNewsByCat("entertainment", 8)
 
   return (
     <div>
-      <div className='container mt-10 bg-green-600 p-4'>
+      <div className='container mt-10  p-4'>
         <div className='text-center mb-5 '>
-          <div className='border-b border-custom '>
-            <Image
+          <div className='border-b  '>
+            {/* <Image
               src={'/img/binodon.jpg'}
               alt={'binodon'}
               width={600}
               height={400}
               className='object-cover w-full h-full'
               layout='responsive'
-            />
+            /> */}
+             <h2 className=" text-2xl inline font-extrabold">
+              বিনোদন
+            </h2>
           </div>
         </div>
         <div className=''>
