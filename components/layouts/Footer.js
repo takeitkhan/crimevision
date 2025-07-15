@@ -16,7 +16,7 @@ const Footer = async ({settings}) => {
     <footer>
       <div className="py-5 bg-gray-200">
         <div className="container mx-auto px-5">
-          <div className="flex justify-center mb-10">
+          <div className="flex justify-center mb-6">
             <div>
               <Link href="/">
               <Image
@@ -32,7 +32,7 @@ const Footer = async ({settings}) => {
               href={facebookLink}
               target="blank"
               className=" px-3 py-1 text-blue-600">
-              ফেসবুক পেজ ভিজিট করতে ক্লিক করুন
+              ফেসবুক পেইজ ভিজিট করতে ক্লিক করুন
               </Link>
             </div>
               {/* <ul className="flex flex-row flex-wrap align-middle items-center gap-2 ">

@@ -29,7 +29,7 @@ const entertainmentNews = await getNewsByCat("entertainment", 8)
         <div className=''>
           <div className='lg:grid lg:grid-cols-2 lg:grid-flow-col lg:gap-4 gap-4'>
             <div>
-              <div className='grid grid-cols-3 grid-rows-2 gap-2'>
+              <div className='grid grid-cols-2 lg:grid-cols-3 grid-rows-2 gap-2'>
                 {entertainmentNews.length > 0 ? (
                   entertainmentNews.slice(1, 7).map((item, index) => (
                     <div

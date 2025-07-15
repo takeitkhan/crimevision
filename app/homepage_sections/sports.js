@@ -56,7 +56,7 @@ export default async function Sports() {
             )}
 
             <div>
-              <div className='grid grid-cols-3 gap-4'>
+              <div className='grid grid-cols-2 lg:grid-cols-3 gap-4'>
                 {sportsNews?.length > 1 ? (
                   sportsNews?.slice(1, 7).map((item, index) => (
                     <div

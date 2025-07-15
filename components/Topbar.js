@@ -71,7 +71,7 @@ const TopBar = ({ setIsOpen, isOpen,settings }) => {
               href={facebookLink}
               target="blank"
               className="rounded-md border-2 border-gray-100 px-3 text-blue-600">
-               আমাদের ফেসবুক পেজ ভিজিট করতে ক্লিক করুন
+               আমাদের ফেসবুক পেইজ ভিজিট করতে ক্লিক করুন
               </Link>
             </div>
           </div>
