@@ -113,13 +113,10 @@ export default function SingleNewsStaticPage({ slug, news, similarNews }) {
 
                     </div>
                   </div>
-
-
                 </div>
 
-                <h1 className='text-4xl d-block font-medium'>{news.name}</h1>
-
-                <div className='flex ' id='printableDiv'>
+                <h1 className='text-3xl mb-1   font-medium'>{news.name}</h1>
+                <div className='flex' id='printableDiv'>
                   <div
                     className='lg:basis-[100%] flex flex-col gap-10'
                     dangerouslySetInnerHTML={{
@@ -136,20 +133,23 @@ export default function SingleNewsStaticPage({ slug, news, similarNews }) {
                     similarNews.map((item, index) => (
                       <div key={`similar-${index}`} className='flex justify-between gap-4'>
                         <div className='basis-1/3'>
-                          <Image
-                            src={item.featured_image}
-                            alt={item.name || 'Thumbnail'}
-                            width={800}
-                            height={500}
-                          />
+                          <div className="w-full h-24 overflow-hidden rounded-md">
+                            <Image
+                              src={item.featured_image}
+                              alt={item.name || 'Thumbnail'}
+                              width={800}
+                              height={600}
+                              className="object-cover w-full h-full"
+                            />
+                          </div>
                         </div>
                         <div className='basis-2/3'>
                           <Link
                             className='inline-block'
                             href={`/news/${item.slug}`}
                           >
-                            <h2 className='basis-1/2 hover:text-yellow-600 w-fit'>
-                              {item?.name?.slice(0, 55) || 'No title'}...
+                            <h2 className='text-[24px] leading-8 basis-1/2 hover:text-yellow-600 w-fit'>
+                              {item?.name?.slice(0, 50) || 'No title'}...
                             </h2>
                           </Link>
                         </div>
@@ -160,6 +160,7 @@ export default function SingleNewsStaticPage({ slug, news, similarNews }) {
                   )}
                 </div>
               </div>
+
             </div>
           </>
         ) : (

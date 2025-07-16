@@ -104,7 +104,7 @@ export default function CategoryPage() {
             {category.hasOwnProperty("child") && category.child.length > 0 ? (
               category.child.slice(0, 5).map((item, index) => (
                 <li key={index}>
-                  <Link href={`${baseUrl}/${item.slug}`}>{item.name}</Link>
+                  <Link className="leading-10" href={`/${item.slug}`}>{item.name}</Link>
                 </li>
               ))
             ) : (
@@ -128,7 +128,7 @@ export default function CategoryPage() {
               alt="sport"
             />
             <div className="flex flex-col gap-2">
-              <h1 className="text-2xl">{news[0].name}</h1>
+              <h1 className="text-2xl leading-10">{news[0].name}</h1>
               <p className="group-hover:text-black group-hover:font-medium text-[16px]">
                 {truncate(news[0].description, 100)}
               </p>
@@ -157,7 +157,7 @@ export default function CategoryPage() {
                   height={200}
                   alt="sports"
                 />
-                <h1 className="text-xl">{item.name}</h1>
+                <h1 className="leading-10 text-xl">{item.name}</h1>
               </Link>
             ))}
           </div>
@@ -175,7 +175,7 @@ export default function CategoryPage() {
                     href={"/news/" + item.slug}
                     className="flex flex-col md:flex-row md:items-center gap-4 group"
                   >
-                    <h1 className="text-2xl">{item.name}</h1>
+                    <h1 className="leading-10 text-2xl">{item.name}</h1>
                   </Link>
                   <p className="text-[16px] group-hover:text-black group-hover:font-medium">
                     <Link

@@ -78,7 +78,7 @@ export default function NewsTabs () {
                 </Link>
               </div>
               <div className='w-2/3'>
-                <h2 className='text-lg font-bold'>
+                <h2 className='text-md md:text-lg font-bold'>
                   <Link
                     href={`/news/${item.slug}`}
                     className='hover:text-blue-500'
