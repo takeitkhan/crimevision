@@ -5,8 +5,9 @@ import React, {useState, useEffect} from "react";
 import Image from "next/image";
 
 // ==== image ====
-import Logo from "../public/img/logo.jpg";
-import { getMetaValueByMetaName } from "@/helpers/metaHelpers";
+import Logo from "../public/img/logo2.png";
+import { getMediaLinkByMetaName, getMetaValueByMetaName } from "@/helpers/metaHelpers";
+import { BASE_URL } from "@/helpers/baseUrl";
 
 const TopBar = ({ setIsOpen, isOpen,settings }) => {
    const [currentTime, setCurrentTime] = useState('');
@@ -58,7 +59,9 @@ const TopBar = ({ setIsOpen, isOpen,settings }) => {
   const facebookLink = getMetaValueByMetaName(settings, "facebook_url") || "#";
   // const twitter = getMetaValueByMetaName(settings, "twitter_url") || "#";
   //  const phone = getMetaValueByMetaName(settings, "company_phone") || "";
-   
+    // const logo = getMediaLinkByMetaName(settings, "site_logoimg_id");
+    // console.log("settings",settings)
+// console.log("logo",logo)
 
   return (
     <header>
@@ -81,8 +84,10 @@ const TopBar = ({ setIsOpen, isOpen,settings }) => {
       <div className="container mx-auto py-2">
         <div className="container mx-auto flex items-center justify-between">
           <div className="basis-1/2">
+          
             <Link href="/">
               <Image
+                // src={`${BASE_URL}${logo}`}
                 src={Logo}
                 className="w-70"
                 alt=" Logo"

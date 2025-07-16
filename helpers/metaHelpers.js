@@ -48,6 +48,20 @@ export const getMediaLinkByMetaName = (data, metaName) => {
   return null;
 };
 
+// export const getMediaLinkByMetaName = (data, metaName) => {
+//   if (!data || !metaName) return null;
+
+//   const item = data?.find(
+//     (dataItem) => dataItem.meta_name === metaName
+//   );
+// // console.log("from utils", item)
+//   if (item?.file_directory && item?.filename) {
+//     return item.file_directory + item.filename;
+//   }
+
+//   return null;
+// };
+
 
 
 // {product?.extra_fields.find(field => field.meta_name === "product_model")?.meta_value}
