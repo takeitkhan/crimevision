@@ -13,12 +13,12 @@ export default async function Bangladesh() {
   
  
   return (
-    <section className='homeBlock pt-[20px] pb-[20px] px-5'>
+    <section className='homeBlock  pb-[10px] px-5 '>
       <div className='container mx-auto'>
         <div className='lg:grid lg:grid-flow-col lg:grid-cols-3 gap-4'>
           <div className='col-span-3 border-b border-custom'>
             <div className='border-b border-custom'>
-              <h2 className='text-2xl inline pr-5 font-extrabold'>জনপদ</h2>
+              <h2 className='text-2xl inline pr-5 '>অপরাধ</h2>
             </div>
             <div className='grid lg:grid-flow-col lg:grid-cols-5 gap-4 py-5'>
               {bangladeshNews?.length > 0 ? (
@@ -30,7 +30,8 @@ export default async function Bangladesh() {
                     height={400} // Specify height
                     layout='responsive' // Makes the image responsive
                   />
-                  <h2 className='text-2xl mt-4'>
+                  <h2 className='text-xl lg:text-2xl font-bold 
+                  leading-[38px] lg:leading-[45px] mt-4'>
                     <Link href={'/news/' + bangladeshNews[0].slug}>
                       {bangladeshNews[0].name}
                     </Link>

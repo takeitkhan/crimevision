@@ -13,6 +13,7 @@ import {
 } from "react-icons/fa";
 import { ShareIcon, PrinterIcon, ClipboardIcon } from '@heroicons/react/24/solid'
 import { useEffect, useState } from 'react';
+import SmallCardWithImage from '@/app/homepage_sections/SmallCardWithImage';
 
 export default function SingleNewsStaticPage({ slug, news, similarNews }) {
   const [origin, setOrigin] = useState("");
@@ -115,7 +116,8 @@ export default function SingleNewsStaticPage({ slug, news, similarNews }) {
                   </div>
                 </div>
 
-                <h1 className='text-3xl mb-1   font-medium'>{news.name}</h1>
+                <h1 className='text-xl lg:text-2xl leading-[40px]
+                 lg:leading-[50px] font-semibold mb-2'>{news.name}</h1>
                 <div className='flex' id='printableDiv'>
                   <div
                     className='lg:basis-[100%] flex flex-col gap-10'
@@ -126,34 +128,12 @@ export default function SingleNewsStaticPage({ slug, news, similarNews }) {
                 </div>
               </div>
 
-              <div className='basis-[30%] lg:mt-0'>
-                <div className='lg:flex lg:flex-col lg:gap-4 text-xl flex flex-col gap-5'>
-                  <h3>সর্বশেষ সংবাদ</h3>
+              <div className='basis-[30%] mt-4 md:mt-0'>
+                <div className='lg:flex lg:flex-col lg:gap-4  flex flex-col gap-5'>
+                  <h3 className='text-xl'>সর্বশেষ সংবাদ</h3>
                   {similarNews?.length > 0 ? (
-                    similarNews.map((item, index) => (
-                      <div key={`similar-${index}`} className='flex justify-between gap-4'>
-                        <div className='basis-1/3'>
-                          <div className="w-full h-24 overflow-hidden rounded-md">
-                            <Image
-                              src={item.featured_image}
-                              alt={item.name || 'Thumbnail'}
-                              width={800}
-                              height={600}
-                              className="object-cover w-full h-full"
-                            />
-                          </div>
-                        </div>
-                        <div className='basis-2/3'>
-                          <Link
-                            className='inline-block'
-                            href={`/news/${item.slug}`}
-                          >
-                            <h2 className='text-[24px] leading-8 basis-1/2 hover:text-yellow-600 w-fit'>
-                              {item?.name?.slice(0, 50) || 'No title'}...
-                            </h2>
-                          </Link>
-                        </div>
-                      </div>
+                    similarNews.slice(0,14).map((item, idx) => (
+                      <SmallCardWithImage news={item} idx={idx}/>
                     ))
                   ) : (
                     <p>No similar news available</p>

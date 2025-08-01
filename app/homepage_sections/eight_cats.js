@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { getNewsByCat } from '@/helpers/actions'
+import SmallCardWithImage from './SmallCardWithImage'
 
 async function EightCats() {
   const politicsNews = await getNewsByCat("politics", 5)
@@ -10,12 +11,12 @@ async function EightCats() {
   const economyNews = await getNewsByCat("economy", 5)
 
   return (
-    <div className='container pt-10 overflow-hidden'>
-      <div className='flex flex-wrap -mx-4'>
+    <div className='container pt-10 overflow-hidden  '>
+      <div className='flex flex-wrap -mx-4 gap-2 md:gap-0'>
 
         {/* জাতীয় */}
-        <div className='w-full md:w-1/2 lg:w-1/3 px-4 mb-6'>
-          <div className='mb-10'>
+        <div className='w-full md:w-1/2 lg:w-1/3 px-4 '>
+          <div className=''>
             <div className='title-heading-wrapper'>
               <div className='title-heading'>
                 জাতীয়
@@ -27,28 +28,15 @@ async function EightCats() {
             </div>
             <div className=''>
               {nationalNews?.map((news, idx) => (
-                <div key={idx} className='grid grid-cols-2 gap-2 items-start w-full mb-2'>
-                  <div className='w-full h-[100px] overflow-hidden rounded-md border-2 border-gray-100'>
-                    <Image
-                      src={news?.featured_image}
-                      alt={news?.name}
-                      width={150}
-                      height={100}
-                      className='w-full h-full object-cover'
-                    />
-                  </div>
-                  <div className='text-gray-800'>
-                    <Link href={'/news/' + news.slug}>{news?.name}</Link>
-                  </div>
-                </div>
+               <SmallCardWithImage news={news} idx={idx}/>
               ))}
             </div>
           </div>
         </div>
 
         {/* রাজনীতি */}
-        <div className='w-full md:w-1/2 lg:w-1/3 px-4 mb-6'>
-          <div className='mb-10'>
+        <div className='w-full md:w-1/2 lg:w-1/3 px-4 '>
+          <div className=''>
             <div className='title-heading-wrapper'>
               <div className='title-heading'>
                 রাজনীতি
@@ -60,28 +48,15 @@ async function EightCats() {
             </div>
             <div>
               {politicsNews?.map((news, idx) => (
-                <div key={idx} className='grid grid-cols-2 gap-2 items-start w-full mb-2'>
-                  <div className='w-full h-[100px] overflow-hidden rounded-md border-2 border-gray-100'>
-                    <Image
-                      src={news?.featured_image}
-                      alt={news?.name}
-                      width={150}
-                      height={100}
-                      className='w-full h-full object-cover'
-                    />
-                  </div>
-                  <div className='text-gray-800'>
-                    <Link href={'/news/' + news.slug}>{news?.name}</Link>
-                  </div>
-                </div>
+                <SmallCardWithImage news={news} idx={idx}/>
               ))}
             </div>
           </div>
         </div>
 
         {/* খেলাধুলা */}
-        <div className='w-full md:w-1/2 lg:w-1/3 px-4 mb-6'>
-          <div className='mb-10'>
+        <div className='w-full md:w-1/2 lg:w-1/3 px-4'>
+          <div className=''>
             <div className='title-heading-wrapper'>
               <div className='title-heading'>
                 খেলাধুলা
@@ -93,20 +68,7 @@ async function EightCats() {
             </div>
             <div>
               {sports?.map((news, idx) => (
-                <div key={idx} className='grid grid-cols-2 gap-2 items-start w-full mb-2'>
-                  <div className='w-full h-[100px] overflow-hidden rounded-md border-2 border-gray-100'>
-                    <Image
-                      src={news?.featured_image}
-                      alt={news?.name}
-                      width={150}
-                      height={100}
-                      className='w-full h-full object-cover'
-                    />
-                  </div>
-                  <div className='text-gray-800'>
-                    <Link href={'/news/' + news.slug}>{news?.name}</Link>
-                  </div>
-                </div>
+              <SmallCardWithImage news={news} idx={idx}/>
               ))}
             </div>
           </div>

@@ -20,7 +20,7 @@ export const metadata = {
 
 const HomeTopBlock = () => {
   return (
-    <div className=''>
+    <div className='px-1.5'>
       <LatestNews />
       <EightCats />
       <Bangladesh />

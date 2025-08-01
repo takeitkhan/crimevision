@@ -4,6 +4,7 @@ import axiosInstance from '@/helpers/axiosInstance'
 import Link from 'next/link'
 import truncate from '@/helpers/truncate'
 import Image from 'next/image'
+import SmallCardWithImage from './SmallCardWithImage'
 
 export default function NewsTabs () {
   const [activeTab, setActiveTab] = useState('latest') // Default tab
@@ -63,31 +64,32 @@ export default function NewsTabs () {
         ) : error ? (
           <p className='text-red-500 text-center'>Error: {error.message}</p>
         ) : newsData.length > 0 ? (
-          newsData.map((item, index) => (
-            <div key={index} className='flex gap-4 mb-4'>
-              <div className='w-[150px] h-[100px] flex-shrink-0 overflow-hidden'>
-                <Link href={`/news/${item.slug}`}>
-                  <Image
-                    src={item.featured_image}
-                    alt={item.name}
-                    width={150}
-                    height={100}
-                    className='w-full h-full object-cover'
-                    unoptimized
-                  />
-                </Link>
-              </div>
-              <div className='w-2/3'>
-                <h2 className='text-md md:text-lg font-bold'>
-                  <Link
-                    href={`/news/${item.slug}`}
-                    className='hover:text-blue-500'
-                  >
-                    {item.name}
-                  </Link>
-                </h2>
-              </div>
-            </div>
+          newsData.map((item, idx) => (
+            <SmallCardWithImage news={item} idx={idx}/>
+            // <div key={index} className='flex gap-4 mb-4'>
+            //   <div className='w-[150px] h-[100px] flex-shrink-0 overflow-hidden'>
+            //     <Link href={`/news/${item.slug}`}>
+            //       <Image
+            //         src={item.featured_image}
+            //         alt={item.name}
+            //         width={150}
+            //         height={100}
+            //         className='w-full h-full object-cover'
+            //         unoptimized
+            //       />
+            //     </Link>
+            //   </div>
+            //   <div className='w-2/3'>
+            //     <h2 className='text-md md:text-lg font-bold'>
+            //       <Link
+            //         href={`/news/${item.slug}`}
+            //         className='hover:text-blue-500'
+            //       >
+            //         {item.name}
+            //       </Link>
+            //     </h2>
+            //   </div>
+            // </div>
           ))
         ) : (
           <p className='text-center text-gray-500'>No news available</p>

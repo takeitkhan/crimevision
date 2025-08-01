@@ -24,7 +24,7 @@ export default function Featured({ featuredNews }) {
           {featuredNews.map((item, index) => (
             <SwiperSlide key={index}>
               <div className='flex flex-col gap-4 w-full px-2'>
-                <div className='w-full h-[450px]  rounded-md'>
+                <div className='w-full h-[220px] sm:h-[350px]  lg:h-[450px]  rounded-md'>
                   <Link href={`/news/${item.slug}`}>
                     <Image
                       src={item.featured_image}
@@ -37,7 +37,7 @@ export default function Featured({ featuredNews }) {
                   </Link>
                 </div>
                 <div className='w-full'>
-                  <h2 className='text-2xl font-bold'>
+                  <h2 className='text-xl lg:text-2xl leading-[40px] lg:leading-[50px] font-semibold'>
                     <Link href={`/news/${item.slug}`} className='hover:text-blue-500'>
                       {item.name}
                     </Link>

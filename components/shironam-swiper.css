@@ -1,0 +1,4 @@
+/* shironam-swiper.css */
+.linear-autoplay-swiper .swiper-wrapper {
+  transition-timing-function: linear !important;
+}

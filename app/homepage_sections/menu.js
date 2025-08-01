@@ -6,37 +6,6 @@ import { IoMdClose } from "react-icons/io";
 export default function Menu({ setIsOpen, isOpen, menus }) {
     const baseUrl = process.env.BASE_URL;
 
-    // console.log("baseUrl", baseUrl)
-    // const baseUrl = process.env.BASE_URL;
-    // const [menus, setMenus] = useState([]);  // Use state to store categories
-    // const [loading, setLoading] = useState(true);       // Add loading state
-    // const [error, setError] = useState(null);           // Add error state
-
-
-    // useEffect(() => {
-    //     axiosInstance.get('/menus?menu=5')
-    //         .then(response => {
-    //             setMenus(response.data.data.items);  // Update state with API data
-    //             setLoading(false);              // Set loading to false when data is fetched
-    //         })
-    //         .catch(error => {
-    //             setError(error);                // Set error state if request fails
-    //             setLoading(false);              // Set loading to false in case of error
-    //         });
-    // }, []);
-
-    // if (loading) {
-    //     return (
-    //         <section className="homeBlock pt-[50px] pb-[80px] px-5">
-    //             <div className="container mx-auto">                    
-    //             </div>
-    //         </section>
-    //     );
-    // }
-
-    // if (error) {
-    //     return <p>Error: {error.message}</p>; 
-    // }
 
 
     return (

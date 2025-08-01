@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import axiosInstance from "@/helpers/axiosInstance";
 import Image from "next/image";
 import truncate from "@/helpers/truncate";
+import CardWithTopImage from "@/components/CardWithTopImage";
 
 export default function CategoryPage() {
   const params = useParams();
@@ -23,7 +24,7 @@ export default function CategoryPage() {
     // Fetch initial news items
     var url =
       slug == "latests"
-        ? "/posts?term_type=news&per_page=13&order_by=desc&page=1"
+        ? "/posts?term_type=news&per_page=13"
         : `posts?term_type=news&per_page=10&category_slug=${slug}&page=1`;
 
     axiosInstance
@@ -128,7 +129,7 @@ export default function CategoryPage() {
               alt="sport"
             />
             <div className="flex flex-col gap-2">
-              <h1 className="text-2xl leading-10">{news[0].name}</h1>
+              <h1 className="text-2xl leading-[42px]">{news[0].name}</h1>
               <p className="group-hover:text-black group-hover:font-medium text-[16px]">
                 {truncate(news[0].description, 100)}
               </p>
@@ -142,23 +143,24 @@ export default function CategoryPage() {
 
         {/* === Secondary Content === */}
         {news.length > 1 ? (
-          <div className="grid md:grid-cols-3 xl:grid-cols-4 gap-6 md:flex-row md:flex-wrap">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 ">
             {news.slice(1, 5).map((item, index) => (
-              <Link
-                key={index}
-                href={"/news/" + item.slug}
-                className="flex flex-col gap-1 bg-gray-100 p-2 rounded-md group"
-              >
-                <Image
-                  src={item.featured_image}
-                  layout="responsive"
-                  className="w-full rounded-md"
-                  width={200}
-                  height={200}
-                  alt="sports"
-                />
-                <h1 className="leading-10 text-xl">{item.name}</h1>
-              </Link>
+              <CardWithTopImage key={index} item={item} height="44" /> 
+              // <Link
+              //   key={index}
+              //   href={"/news/" + item.slug}
+              //   className="flex flex-col gap-1 bg-gray-100 p-2 rounded-md group"
+              // >
+              //   <Image
+              //     src={item.featured_image}
+              //     layout="responsive"
+              //     className="w-full rounded-md"
+              //     width={200}
+              //     height={200}
+              //     alt="sports"
+              //   />
+              //   <h1 className="leading-[32px] text-lg">{item.name}</h1>
+              // </Link>
             ))}
           </div>
         ) : (
@@ -175,7 +177,7 @@ export default function CategoryPage() {
                     href={"/news/" + item.slug}
                     className="flex flex-col md:flex-row md:items-center gap-4 group"
                   >
-                    <h1 className="leading-10 text-2xl">{item.name}</h1>
+                    <h1 className="leading-[32px] text-lg font-semibold">{item.name}</h1>
                   </Link>
                   <p className="text-[16px] group-hover:text-black group-hover:font-medium">
                     <Link
