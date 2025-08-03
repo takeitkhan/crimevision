@@ -1,7 +1,5 @@
 
-import Image from 'next/image';
-import Link from 'next/link';
-import truncate from '@/helpers/truncate';
+
 import { getNewsByCat } from '@/helpers/actions';
 import CardWithTopImage from '@/components/CardWithTopImage';
 import BigCardWithImage from './BigCardWithImage';

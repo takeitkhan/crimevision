@@ -4,8 +4,8 @@ import truncate from '@/helpers/truncate'
 import { getMaxViewedNewsByCat, getNewsByCat } from '@/helpers/actions'
 
 export default async function Bangladesh() {
-  const bangladeshNews = await getNewsByCat("town_village", 14);
-  const maxVisitedNews = await getMaxViewedNewsByCat("town_village", 8);
+  const bangladeshNews = await getNewsByCat("অপরাধ", 14);
+  const maxVisitedNews = await getMaxViewedNewsByCat("অপরাধ", 8);
 
 // console.log("bangladeshNews", bangladeshNews)
 
@@ -22,22 +22,25 @@ export default async function Bangladesh() {
             </div>
             <div className='grid lg:grid-flow-col lg:grid-cols-5 gap-4 py-5'>
               {bangladeshNews?.length > 0 ? (
-                <div className='col-span-3'>
-                  <Image
-                    src={bangladeshNews[0].featured_image}
-                    alt={bangladeshNews[0].name}
-                    width={600} // Specify width
-                    height={400} // Specify height
-                    layout='responsive' // Makes the image responsive
-                  />
-                  <h2 className='text-xl lg:text-2xl font-bold 
-                  leading-[38px] lg:leading-[45px] mt-4'>
-                    <Link href={'/news/' + bangladeshNews[0].slug}>
-                      {bangladeshNews[0].name}
-                    </Link>
-                  </h2>
-                  <p>{truncate(bangladeshNews[0].description, 120)}</p>
-                </div>
+               <div className="col-span-3">
+  <div className="relative  w-full h-[150px] sm:h-[300px] lg:h-[350px] overflow-hidden rounded-md">
+    <Image
+      src={bangladeshNews[0].featured_image}
+      alt={bangladeshNews[0].name}
+      fill // fills the parent container
+      className="object-cover"
+    />
+  </div>
+
+  <h2 className="text-xl lg:text-2xl font-bold leading-[30px] lg:leading-[38px] mt-4">
+    <Link href={'/news/' + bangladeshNews[0].slug}>
+      {bangladeshNews[0].name}
+    </Link>
+  </h2>
+
+  <p>{truncate(bangladeshNews[0].description, 120)}</p>
+</div>
+
               ) : (
                 <p>No post found!</p>
               )}
@@ -79,29 +82,7 @@ export default async function Bangladesh() {
               
             </div>
           </div>
-          {/* <div className='block'>
-            <div>
-              <div className='border-b border-custom'>
-                <h2 className='text-2xl inline pr-5 font-extrabold'>
-                  সর্বাধিক পঠিত
-                </h2>
-              </div>
-
-              <div className='mt-2'>
-                <ul>
-                  {maxVisitedNews.length > 0 ? (
-                    maxVisitedNews?.map((item, index) => (
-                      <li key={index} className='border-b border-gray-300 py-2'>
-                        <Link href={'/news/' + item.slug}> {item.name} </Link>
-                      </li>
-                    ))
-                  ) : (
-                    <li></li>
-                  )}
-                </ul>
-              </div>
-            </div>
-          </div> */}
+         
 
         </div>
       </div>

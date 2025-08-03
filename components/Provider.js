@@ -6,7 +6,7 @@ import { getMenus, getNewsByCat, getSettings } from "@/helpers/actions";
 const Provider = async ({ children }) => {
   const data = await getMenus()
   const settings=await getSettings()
-   const shironamNews = await getNewsByCat("information_technology", 19)
+   const shironamNews = await getNewsByCat("শিরোনাম", 10)
   const menus = data?.items
 
   return (

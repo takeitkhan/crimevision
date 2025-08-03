@@ -17,7 +17,8 @@ const Header = ({ menus,settings,shironamNews }) => {
       <TopBar setIsOpen={setIsOpen} isOpen={isOpen} settings={settings} />
       <Menu setIsOpen={setIsOpen} isOpen={isOpen} menus={menus} />
       {/* <Shironam/> */}
-      <ShironamSwipper shironamNews={shironamNews}/>
+      {shironamNews?.length>0 && <ShironamSwipper shironamNews={shironamNews}/> }
+      
     </>
   );
 };
