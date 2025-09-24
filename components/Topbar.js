@@ -10,6 +10,10 @@ import { getMediaLinkByMetaName, getMetaValueByMetaName } from "@/helpers/metaHe
 import { BASE_URL } from "@/helpers/baseUrl";
 
 const TopBar = ({ setIsOpen, isOpen,settings }) => {
+
+
+
+
    const [currentTime, setCurrentTime] = useState('');
   const handleClick = () => {
     setIsOpen(!isOpen);
@@ -59,7 +63,7 @@ const TopBar = ({ setIsOpen, isOpen,settings }) => {
   const facebookLink = getMetaValueByMetaName(settings, "facebook_url") || "#";
   // const twitter = getMetaValueByMetaName(settings, "twitter_url") || "#";
   //  const phone = getMetaValueByMetaName(settings, "company_phone") || "";
-    // const logo = getMediaLinkByMetaName(settings, "site_logoimg_id");
+    const logo = getMediaLinkByMetaName(settings, "site_logoimg_id") || Logo ;
     // console.log("settings",settings)
 // console.log("logo",logo)
 
@@ -88,7 +92,7 @@ const TopBar = ({ setIsOpen, isOpen,settings }) => {
             <Link href="/">
               <Image
                 // src={`${BASE_URL}${logo}`}
-                src={Logo}
+                src={logo}
                 className="w-70"
                 alt=" Logo"
                 width={250}

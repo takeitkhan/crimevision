@@ -8,6 +8,7 @@ const Provider = async ({ children }) => {
   const settings=await getSettings()
    const shironamNews = await getNewsByCat("শিরোনাম", 10)
   const menus = data?.items
+  
 
   return (
     <>
