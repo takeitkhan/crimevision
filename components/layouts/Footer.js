@@ -13,6 +13,8 @@ const Footer = async ({settings}) => {
    const email = getMetaValueByMetaName(settings, "company_email") || "#";
    const phone = getMetaValueByMetaName(settings, "company_phone") || "০১৯২৩-৮৪৬৬৬৬";
    const phone_2 = getMetaValueByMetaName(settings, "phone_2") || "০১৭১৭-৩৫১৬৭৪ ";
+    const footer_content = getMetaValueByMetaName(settings, "footer_content") 
+   
 
   return (
     <footer>
@@ -51,7 +53,18 @@ const Footer = async ({settings}) => {
            
             </div>
           </div>
-          <div className="container justify-center mx-auto w-full ">
+
+
+           <div className="container justify-center mx-auto w-full ">
+           <div
+             className=""
+               dangerouslySetInnerHTML={{ __html:footer_content }}
+             ></div>
+          </div>
+
+
+
+          {/* <div className="container justify-center mx-auto w-full ">
             <div className=" flex flex-col text-center">
               <div className="md:flex gap-1 justify-center items-center">
               <p>সম্পাদক ও প্রকাশকঃ </p>
@@ -78,12 +91,9 @@ const Footer = async ({settings}) => {
             <p className="">
               ই-মেইলঃ { email}
             </p>
-             {/* <p className=" flex">
-              <span>ই-মেইলঃ</span>
-             <span>  { email}</span>
-            </p> */}
+           
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>
