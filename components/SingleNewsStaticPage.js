@@ -26,6 +26,8 @@ export default function SingleNewsStaticPage({ slug, news, similarNews }) {
 
   const shareUrl = `${origin}/news/${slug}`;
 
+// console.log("shareurl", shareUrl)
+console.log("slug", news)
 
   return (
     <section className='py-10'>
@@ -106,7 +108,7 @@ export default function SingleNewsStaticPage({ slug, news, similarNews }) {
 
                       <button
                         onClick={() => handleCopyLink(news?.slug)}
-                        className='print-button flex items-center flex gap-[6px] bg-green-800 text-white rounded-md p-2'
+                        className='print-button flex items-center  gap-[6px] bg-green-800 text-white rounded-md p-2'
                       >
                         <ClipboardIcon className='w-5 h-5 ' />
                         <span>Copy Link</span>

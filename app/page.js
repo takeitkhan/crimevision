@@ -4,6 +4,7 @@ import LatestNews from './homepage_sections/latest_news'
 import Sports from './homepage_sections/sports'
 import InformationTechnology from './homepage_sections/information_technology'
 import EightCats from './homepage_sections/eight_cats'
+import SaraDesh from './homepage_sections/SaraDesh'
 
 export const metadata = {
   title: 'ক্রাইম ভিশন',
@@ -26,7 +27,7 @@ const HomeTopBlock = () => {
       <Bangladesh />
       <Sports />
       <Entertainment />
-      <InformationTechnology />
+      <SaraDesh />
     </div>
   )
 }
