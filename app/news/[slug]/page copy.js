@@ -17,7 +17,7 @@ export async function generateMetadata({ params }) {
   ).then(res => res.json())
 
   const headersList = headers()
-  const origin = headersList.get('origin') || 'https://crimevision24.com'
+  const origin = headersList.get('origin') || 'https://crimevision.news'
   const currentUrl = `${origin}/news/${slug}`
 
   // SEO-friendly truncation
